@@ -17,7 +17,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "check:secrets": "tsx scripts/check-secrets.ts",
-    "verify": "npm run check:secrets && npm run typecheck && npm run lint && npm test"
+    "verify": "npm run check:secrets && npm run typecheck && npm run lint && npm test",
+    "census": "tsx --env-file=.env scripts/fetch-census.ts"
   },
   "dependencies": {
     "next": "16.4.6",
