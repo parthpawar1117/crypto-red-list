@@ -22,7 +22,7 @@ export interface FeatureInput {
 export const FEATURE_NAMES = ["bias", "rank", "A", "B", "D", "young"] as const;
 
 export function featuresOf(f: FeatureInput): number[] {
-  return [1, f.rank / 500, (f.a ?? 0) / 4, (f.b ?? 0) / 4, (f.d ?? 0) / 3, f.young ? 1 : 0];
+  return [1, f.rank / 500, (f.a ?? 0) / 4, (f.b ?? 0) / 4, (f.d ?? 0) / 4, f.young ? 1 : 0];
 }
 
 const sigmoid = (z: number) => 1 / (1 + Math.exp(-z));

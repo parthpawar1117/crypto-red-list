@@ -63,11 +63,16 @@ describe("signal B: share of exchange pairs lost (6 months)", () => {
 });
 
 describe("signal D: trading turnover (24h volume / market cap)", () => {
-  it("grades thin trading 0-3 with cut-offs 0.2 / 0.5 / 1 %", () => {
+  it("grades thin trading 0-4 with cut-offs 0.01 / 0.2 / 0.5 / 1 %", () => {
+    expect(signalD(coin({ vol: 50_000 }))).toMatchObject({ value: 0.005, level: 4 });
     expect(signalD(coin({ vol: 1_000_000 }))).toMatchObject({ value: 0.1, level: 3 });
     expect(signalD(coin({ vol: 3_000_000 }))?.level).toBe(2);
     expect(signalD(coin({ vol: 8_000_000 }))?.level).toBe(1);
     expect(signalD(coin({ vol: 20_000_000 }))?.level).toBe(0);
+  });
+
+  it("treats exactly zero volume as not reported (no signal): since late 2025 CMC shows 0 for many live coins", () => {
+    expect(signalD(coin({ vol: 0 }))).toBeNull();
   });
 
   it("returns null without volume or market cap", () => {

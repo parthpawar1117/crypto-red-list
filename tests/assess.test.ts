@@ -59,6 +59,18 @@ describe("assessCoin", () => {
     expect(r.probability).not.toBeNull();
   });
 
+  it("adds a data note instead of a danger signal when CMC reports zero volume", () => {
+    const r = assessCoin({ now: coin({ vol: 0 }), halfAgo: coin(), yearAgo: coin(), marketRatio: 1, weights });
+    expect(r.signals.D).toBeNull();
+    expect(r.status).toBe("LC");
+    expect(r.notes).toContain("CoinMarketCap reports no trading volume for this coin, so trading activity could not be judged");
+  });
+
+  it("never shows a misleading 0.00% for tiny but real volume", () => {
+    const r = assessCoin({ now: coin({ vol: 30_000 }), halfAgo: coin(), yearAgo: coin(), marketRatio: 1, weights });
+    expect(r.reasons).toContain("Trades less than 0.01% of its value per day");
+  });
+
   it("explains a market-relative crash in plain words", () => {
     const r = assessCoin({ now: coin({ mcap: 100_000_000 }), halfAgo: coin(), yearAgo: coin(), marketRatio: 1, weights });
     expect(r.reasons).toContain("Fell 90% behind the overall market in 12 months");

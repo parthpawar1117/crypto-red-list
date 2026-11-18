@@ -3,7 +3,7 @@ import { auc, featuresOf, predict, statusFromProbability, train, STATUS_THRESHOL
 
 describe("featuresOf", () => {
   it("builds [bias, rank, A, B, D, young] scaled to roughly 0-1", () => {
-    expect(featuresOf({ rank: 250, a: 4, b: 2, d: 3, young: false })).toEqual([1, 0.5, 1, 0.5, 1, 0]);
+    expect(featuresOf({ rank: 250, a: 4, b: 2, d: 4, young: false })).toEqual([1, 0.5, 1, 0.5, 1, 0]);
   });
 
   it("treats a missing signal as 0 (no evidence of decline) and flags coins under a year old", () => {

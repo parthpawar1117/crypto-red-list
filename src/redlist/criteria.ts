@@ -61,12 +61,18 @@ export function signalB(now: CoinSnapshot, halfAgo: CoinSnapshot | undefined): S
 /**
  * D: daily turnover, 24h volume as % of market cap. A coin almost nobody
  * trades has a price that means little and no buyers when holders want out.
- * Below 0.2 / 0.5 / 1 % gives levels 3..1.
+ * Below 0.01 / 0.2 / 0.5 / 1 % gives levels 4..1 (under 0.01%, coins
+ * vanished 57% of the time in the training years vs 21% at 0.01-0.2%).
+ *
+ * Exactly zero volume counts as "not reported", not as level 4. Until 2025
+ * zero-volume coins nearly all died, but from late 2025 CMC reports 0 for
+ * many healthy coins (in the Nov 2025 cohort 1 of 16 vanished), so zero
+ * no longer means what it used to.
  */
 export function signalD(now: CoinSnapshot): Signal | null {
-  if (!now.mcap || now.mcap <= 0 || now.vol == null) return null;
+  if (!now.mcap || now.mcap <= 0 || !now.vol || now.vol <= 0) return null;
   const value = (now.vol * 100) / now.mcap;
-  const level = value < 0.2 ? 3 : value < 0.5 ? 2 : value < 1 ? 1 : 0;
+  const level = value < 0.01 ? 4 : value < 0.2 ? 3 : value < 0.5 ? 2 : value < 1 ? 1 : 0;
   return { value, level };
 }
 
