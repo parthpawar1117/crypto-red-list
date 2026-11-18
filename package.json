@@ -20,7 +20,8 @@
     "verify": "npm run check:secrets && npm run typecheck && npm run lint && npm test",
     "census": "tsx --env-file=.env scripts/fetch-census.ts",
     "calibrate": "tsx scripts/calibrate.ts",
-    "redlist": "tsx --env-file=.env scripts/redlist.ts"
+    "redlist": "tsx --env-file=.env scripts/redlist.ts",
+    "backtest": "tsx scripts/backtest.ts"
   },
   "dependencies": {
     "next": "16.4.6",
