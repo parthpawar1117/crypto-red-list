@@ -74,3 +74,14 @@ describe("buildLiveRedList", () => {
     for (const call of fetch.mock.calls) expect(call[0].toString()).not.toContain(TEST_KEY);
   });
 });
+
+describe("refresh schedule", () => {
+  it("keeps the route's literal revalidate in sync and inside CMC Basic's 10k credits/month", async () => {
+    const { REFRESH_SECONDS } = await import("@/live/get-redlist");
+    const { readFileSync } = await import("node:fs");
+    expect(readFileSync("app/api/redlist/route.ts", "utf8")).toContain(`export const revalidate = ${REFRESH_SECONDS};`);
+    const creditsPerRefresh = 62;
+    const perMonth = (30 * 86400 / REFRESH_SECONDS) * creditsPerRefresh;
+    expect(perMonth).toBeLessThan(10_000);
+  });
+});
