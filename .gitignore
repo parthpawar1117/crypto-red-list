@@ -17,3 +17,6 @@ next-env.d.ts
 .DS_Store
 Thumbs.db
 *.log
+
+# CoinMarketCap census snapshots: re-download with npm run census (CMC data is not redistributed)
+data/census/
