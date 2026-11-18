@@ -10,12 +10,12 @@
     "young"
   ],
   "weights": [
-    -3.9083,
-    0.1997,
-    0.9701,
-    1.1875,
-    2.3897,
-    0.5616
+    -3.8439,
+    0.2868,
+    0.9477,
+    1.3291,
+    2.7237,
+    0.6061
   ],
   "thresholds": {
     "CR": 0.4,
@@ -26,90 +26,90 @@
   "train": {
     "from": "2019-11-15",
     "to": "2021-11-15",
-    "coinQuarters": 3688,
+    "coinQuarters": 3680,
     "cohorts": 9,
-    "baseRate": 0.0578,
-    "auc": 0.7895,
-    "aucRankOnly": 0.5694,
+    "baseRate": 0.0579,
+    "auc": 0.7727,
+    "aucRankOnly": 0.569,
     "riskiestTenth": {
-      "rate": 0.2656,
-      "lift": 4.6
+      "rate": 0.2391,
+      "lift": 4.13
     },
     "byStatus": {
       "LC": {
-        "n": 2949,
-        "vanished": 77,
-        "rate": 0.0261,
-        "predicted": 0.0277
+        "n": 2892,
+        "vanished": 83,
+        "rate": 0.0287,
+        "predicted": 0.0305
       },
       "NT": {
-        "n": 260,
-        "vanished": 22,
-        "rate": 0.0846,
-        "predicted": 0.072
+        "n": 357,
+        "vanished": 29,
+        "rate": 0.0812,
+        "predicted": 0.0727
       },
       "VU": {
-        "n": 234,
+        "n": 238,
         "vanished": 41,
-        "rate": 0.1752,
-        "predicted": 0.1595
+        "rate": 0.1723,
+        "predicted": 0.1534
       },
       "EN": {
-        "n": 211,
-        "vanished": 64,
-        "rate": 0.3033,
-        "predicted": 0.2785
+        "n": 150,
+        "vanished": 42,
+        "rate": 0.28,
+        "predicted": 0.2781
       },
       "CR": {
-        "n": 34,
-        "vanished": 9,
-        "rate": 0.2647,
-        "predicted": 0.4885
+        "n": 43,
+        "vanished": 18,
+        "rate": 0.4186,
+        "predicted": 0.479
       }
     }
   },
   "test": {
     "from": "2022-11-15",
     "to": "2025-11-15",
-    "coinQuarters": 5471,
+    "coinQuarters": 5470,
     "cohorts": 13,
-    "baseRate": 0.0473,
-    "auc": 0.7499,
+    "baseRate": 0.0472,
+    "auc": 0.736,
     "aucRankOnly": 0.5755,
     "riskiestTenth": {
-      "rate": 0.2505,
-      "lift": 5.29
+      "rate": 0.2303,
+      "lift": 4.88
     },
     "byStatus": {
       "LC": {
-        "n": 4816,
-        "vanished": 117,
-        "rate": 0.0243,
-        "predicted": 0.0252
+        "n": 4787,
+        "vanished": 127,
+        "rate": 0.0265,
+        "predicted": 0.0277
       },
       "NT": {
-        "n": 215,
-        "vanished": 13,
-        "rate": 0.0605,
-        "predicted": 0.0767
+        "n": 331,
+        "vanished": 18,
+        "rate": 0.0544,
+        "predicted": 0.0751
       },
       "VU": {
-        "n": 264,
+        "n": 249,
         "vanished": 61,
-        "rate": 0.2311,
-        "predicted": 0.1589
+        "rate": 0.245,
+        "predicted": 0.159
       },
       "EN": {
-        "n": 174,
-        "vanished": 67,
-        "rate": 0.3851,
-        "predicted": 0.2418
+        "n": 90,
+        "vanished": 44,
+        "rate": 0.4889,
+        "predicted": 0.2721
       },
       "CR": {
-        "n": 2,
-        "vanished": 1,
-        "rate": 0.5,
-        "predicted": 0.405
+        "n": 13,
+        "vanished": 8,
+        "rate": 0.6154,
+        "predicted": 0.418
       }
     }
   }
