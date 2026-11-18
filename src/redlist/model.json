@@ -1,0 +1,116 @@
+{
+  "version": 3,
+  "outcome": "Not in CoinMarketCap's top 3,000 twelve months later",
+  "features": [
+    "bias",
+    "rank",
+    "A",
+    "B",
+    "D",
+    "young"
+  ],
+  "weights": [
+    -3.9083,
+    0.1997,
+    0.9701,
+    1.1875,
+    2.3897,
+    0.5616
+  ],
+  "thresholds": {
+    "CR": 0.4,
+    "EN": 0.2,
+    "VU": 0.1,
+    "NT": 0.05
+  },
+  "train": {
+    "from": "2019-11-15",
+    "to": "2021-11-15",
+    "coinQuarters": 3688,
+    "cohorts": 9,
+    "baseRate": 0.0578,
+    "auc": 0.7895,
+    "aucRankOnly": 0.5694,
+    "riskiestTenth": {
+      "rate": 0.2656,
+      "lift": 4.6
+    },
+    "byStatus": {
+      "LC": {
+        "n": 2949,
+        "vanished": 77,
+        "rate": 0.0261,
+        "predicted": 0.0277
+      },
+      "NT": {
+        "n": 260,
+        "vanished": 22,
+        "rate": 0.0846,
+        "predicted": 0.072
+      },
+      "VU": {
+        "n": 234,
+        "vanished": 41,
+        "rate": 0.1752,
+        "predicted": 0.1595
+      },
+      "EN": {
+        "n": 211,
+        "vanished": 64,
+        "rate": 0.3033,
+        "predicted": 0.2785
+      },
+      "CR": {
+        "n": 34,
+        "vanished": 9,
+        "rate": 0.2647,
+        "predicted": 0.4885
+      }
+    }
+  },
+  "test": {
+    "from": "2022-11-15",
+    "to": "2025-11-15",
+    "coinQuarters": 5471,
+    "cohorts": 13,
+    "baseRate": 0.0473,
+    "auc": 0.7499,
+    "aucRankOnly": 0.5755,
+    "riskiestTenth": {
+      "rate": 0.2505,
+      "lift": 5.29
+    },
+    "byStatus": {
+      "LC": {
+        "n": 4816,
+        "vanished": 117,
+        "rate": 0.0243,
+        "predicted": 0.0252
+      },
+      "NT": {
+        "n": 215,
+        "vanished": 13,
+        "rate": 0.0605,
+        "predicted": 0.0767
+      },
+      "VU": {
+        "n": 264,
+        "vanished": 61,
+        "rate": 0.2311,
+        "predicted": 0.1589
+      },
+      "EN": {
+        "n": 174,
+        "vanished": 67,
+        "rate": 0.3851,
+        "predicted": 0.2418
+      },
+      "CR": {
+        "n": 2,
+        "vanished": 1,
+        "rate": 0.5,
+        "predicted": 0.405
+      }
+    }
+  }
+}

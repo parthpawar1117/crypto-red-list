@@ -18,7 +18,8 @@
     "lint": "eslint .",
     "check:secrets": "tsx scripts/check-secrets.ts",
     "verify": "npm run check:secrets && npm run typecheck && npm run lint && npm test",
-    "census": "tsx --env-file=.env scripts/fetch-census.ts"
+    "census": "tsx --env-file=.env scripts/fetch-census.ts",
+    "calibrate": "tsx scripts/calibrate.ts"
   },
   "dependencies": {
     "next": "16.4.6",
