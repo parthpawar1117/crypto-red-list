@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fromCmcListing, isStablecoin } from "@/redlist/census";
+import { fromCmcListing, isStablecoin, looksDollarPegged } from "@/redlist/census";
 
 const listing = {
   id: 74,
@@ -43,5 +43,24 @@ describe("isStablecoin", () => {
     expect(isStablecoin([{ slug: "usd-stablecoin" }])).toBe(true);
     expect(isStablecoin(["memes", "stablecoin-protocol"])).toBe(false);
     expect(isStablecoin(undefined)).toBe(false);
+  });
+});
+
+describe("looksDollarPegged (backup for stablecoins CMC forgot to tag)", () => {
+  it("catches coins named like a dollar that trade within 2% of $1", () => {
+    expect(looksDollarPegged("eUSD", "Electronic USD", 0.9987)).toBe(true);
+    expect(looksDollarPegged("USDon", "U.S. Dollar Tokenized Currency (Ondo)", 1.001)).toBe(true);
+    expect(looksDollarPegged("USX", "Solstice USX", 0.999)).toBe(true);
+  });
+
+  it("ignores dollar-named coins that are not near $1, and $1 coins without a dollar name", () => {
+    expect(looksDollarPegged("USDX", "Some USD Token", 0.42)).toBe(false);
+    expect(looksDollarPegged("ABC", "Alphabet", 1.0)).toBe(false);
+    expect(looksDollarPegged("eUSD", undefined, null)).toBe(false);
+  });
+
+  it("is applied by fromCmcListing", () => {
+    const row = { id: 9, symbol: "eUSD", name: "Electronic USD", cmc_rank: 485, tags: ["ethereum-ecosystem"], quote: { USD: { price: 0.9987 } } };
+    expect(fromCmcListing(row).stable).toBe(true);
   });
 });

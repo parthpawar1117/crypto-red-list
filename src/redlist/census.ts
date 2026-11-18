@@ -25,6 +25,17 @@ export function isStablecoin(tags: CmcListingRow["tags"] | undefined): boolean {
   });
 }
 
+/**
+ * Backup for stablecoins CMC forgot to tag (eUSD, USDon, USX in Nov 2026):
+ * a dollar-like name or symbol AND a price within 2% of $1. The price check
+ * stops dollar-named coins that are not pegged from being skipped.
+ */
+export function looksDollarPegged(symbol: string, name: string | undefined, price: number | null | undefined): boolean {
+  if (typeof price !== "number" || Math.abs(price - 1) > 0.02) return false;
+  const label = `${symbol} ${name ?? ""}`;
+  return /usd|dollar/i.test(label) || /^US[A-Z0-9]{0,3}$/.test(symbol);
+}
+
 const num = (v: number | null | undefined): number | null => (typeof v === "number" && Number.isFinite(v) ? v : null);
 
 export function fromCmcListing(row: CmcListingRow): CoinSnapshot {
@@ -38,6 +49,6 @@ export function fromCmcListing(row: CmcListingRow): CoinSnapshot {
     price: num(q.price),
     mcap: num(q.market_cap),
     vol: num(q.volume_24h),
-    stable: isStablecoin(row.tags),
+    stable: isStablecoin(row.tags) || looksDollarPegged(row.symbol, row.name, q.price),
   };
 }
