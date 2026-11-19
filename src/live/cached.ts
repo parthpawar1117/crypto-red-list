@@ -16,6 +16,7 @@ import { fetchCoinInfo, type CoinInfo } from "./coin-info";
 import { fetchFearGreedHistory, type FearGreedDay } from "./fear-greed";
 import { getRedList, REFRESH_SECONDS } from "./get-redlist";
 import type { EvidenceSummary } from "./redlist-live";
+import { SHIPPED_WEIGHTS } from "../redlist/shipped-model";
 
 const DAY = 86_400;
 
@@ -27,7 +28,8 @@ function summarize(entries: EvidenceEntry[]): EvidenceSummary[] {
   });
 }
 
-export const getCachedRedList = unstable_cache(getRedList, ["redlist-v3"], { revalidate: REFRESH_SECONDS, tags: ["redlist"] });
+// The weights are part of the key: a retrained model never serves ratings from the old one.
+export const getCachedRedList = unstable_cache(getRedList, ["redlist", SHIPPED_WEIGHTS.join(",")], { revalidate: REFRESH_SECONDS, tags: ["redlist"] });
 
 export interface CachedCoinInfo {
   info: Record<number, CoinInfo>;
