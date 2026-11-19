@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" width="1280" height="420" role="img" aria-label="The Crypto Red List: an IUCN-style extinction-risk list for the top 500 cryptocurrencies">
+  <rect width="1280" height="420" fill="#f4f0e6"/>
+  <line x1="0" y1="2" x2="1280" y2="2" stroke="#1d1a16" stroke-width="4"/>
+  <text x="70" y="92" font-family="ui-monospace, Menlo, monospace" font-size="20" letter-spacing="4" fill="#776f62">ASSESSMENT OF THE TOP 500 CRYPTOCURRENCIES · LIVE COINMARKETCAP DATA</text>
+  <text x="66" y="190" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="700" letter-spacing="-3" fill="#1d1a16">The Crypto Red List</text>
+  <text x="70" y="244" font-family="Georgia, serif" font-size="30" fill="#4a443b">Which coins are heading for extinction? Measured, not guessed.</text>
+  <g font-family="ui-monospace, Menlo, monospace" font-size="17" font-weight="700" text-anchor="middle">
+    <circle cx="100" cy="330" r="30" fill="#d81e05" stroke="#1d1a16" stroke-width="2.5"/><text x="100" y="336" fill="#fff">CR</text>
+    <line x1="132" y1="330" x2="152" y2="330" stroke="#d6cdb9" stroke-width="2"/>
+    <circle cx="180" cy="330" r="24" fill="#fc7f3f" stroke="#1d1a16" stroke-opacity=".4"/><text x="180" y="336" fill="#1d1a16">EN</text>
+    <line x1="206" y1="330" x2="222" y2="330" stroke="#d6cdb9" stroke-width="2"/>
+    <circle cx="248" cy="330" r="24" fill="#f9e814" stroke="#1d1a16" stroke-opacity=".4"/><text x="248" y="336" fill="#1d1a16">VU</text>
+    <line x1="274" y1="330" x2="290" y2="330" stroke="#d6cdb9" stroke-width="2"/>
+    <circle cx="316" cy="330" r="24" fill="#cce226" stroke="#1d1a16" stroke-opacity=".4"/><text x="316" y="336" fill="#1d1a16">NT</text>
+    <line x1="342" y1="330" x2="358" y2="330" stroke="#d6cdb9" stroke-width="2"/>
+    <circle cx="384" cy="330" r="24" fill="#60c659" stroke="#1d1a16" stroke-opacity=".4"/><text x="384" y="336" fill="#1d1a16">LC</text>
+  </g>
+  <g font-family="Georgia, serif" fill="#1d1a16">
+    <text x="520" y="318" font-size="48" font-weight="700">5.1×</text>
+    <text x="520" y="350" font-size="17" fill="#4a443b" font-family="ui-monospace, Menlo, monospace">riskiest tenth vs base rate</text>
+    <text x="800" y="318" font-size="48" font-weight="700">8 of 10</text>
+    <text x="800" y="350" font-size="17" fill="#4a443b" font-family="ui-monospace, Menlo, monospace">Nov 2022 picks that vanished</text>
+    <text x="1070" y="318" font-size="48" font-weight="700">0.748</text>
+    <text x="1070" y="350" font-size="17" fill="#4a443b" font-family="ui-monospace, Menlo, monospace">out-of-sample AUC</text>
+  </g>
+</svg>
