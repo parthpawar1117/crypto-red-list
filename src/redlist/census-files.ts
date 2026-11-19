@@ -1,6 +1,7 @@
 /** Where the local quarterly census lives, and which dates it covers. */
 import { existsSync, readFileSync } from "node:fs";
 import type { CoinSnapshot } from "./criteria";
+import { liveUniverse } from "./census";
 
 export const FIRST_CENSUS = "2018-11-15";
 export const LAST_CENSUS = "2026-11-15";
@@ -20,10 +21,13 @@ export function shiftMonths(date: string, months: number): string {
 
 export const censusPath = (date: string) => `data/census/${date}.json`;
 
-/** Loads one census as id -> snapshot, or null if not downloaded. */
+/**
+ * Loads one census as id -> snapshot (or null if not downloaded), in the same
+ * universe the live site rates: derivative tokens dropped, ranks renumbered.
+ */
 export function loadCensus(date: string): Map<number, CoinSnapshot> | null {
   const file = censusPath(date);
   if (!existsSync(file)) return null;
   const rows = JSON.parse(readFileSync(file, "utf8")) as CoinSnapshot[];
-  return new Map(rows.map((r) => [r.id, r]));
+  return liveUniverse(new Map(rows.map((r) => [r.id, r])));
 }

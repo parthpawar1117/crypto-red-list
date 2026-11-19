@@ -23,6 +23,7 @@ describe("fromCmcListing", () => {
       mcap: 55_000_000_000,
       vol: 11_000_000_000,
       stable: false,
+      derivative: false,
     });
   });
 
@@ -62,5 +63,32 @@ describe("looksDollarPegged (backup for stablecoins CMC forgot to tag)", () => {
   it("is applied by fromCmcListing", () => {
     const row = { id: 9, symbol: "eUSD", name: "Electronic USD", cmc_rank: 485, tags: ["ethereum-ecosystem"], quote: { USD: { price: 0.9987 } } };
     expect(fromCmcListing(row).stable).toBe(true);
+  });
+});
+
+import { isDerivative, liveUniverse } from "@/redlist/census";
+
+describe("isDerivative (tokens that represent another asset: wrapped, staked, bridged)", () => {
+  it("uses CMC's tags, the same ones listings/latest leaves out", () => {
+    expect(isDerivative(["defi", "rehypothecated-crypto"])).toBe(true);
+    expect(isDerivative(["liquid-staking-derivatives"])).toBe(true);
+    expect(isDerivative([{ slug: "wrapped-tokens" }])).toBe(true);
+    expect(isDerivative(["defi", "staking"])).toBe(false);
+    expect(isDerivative(undefined)).toBe(false);
+  });
+
+  it("is applied by fromCmcListing", () => {
+    expect(fromCmcListing({ id: 3717, symbol: "WBTC", cmc_rank: 204, tags: ["wrapped-tokens"], quote: { USD: { price: 90000 } } }).derivative).toBe(true);
+    expect(fromCmcListing(listing).derivative).toBe(false);
+  });
+});
+
+describe("liveUniverse", () => {
+  it("drops derivative tokens and re-ranks the rest 1..n, like CMC's live listing", () => {
+    const snap = (id: number, rank: number, derivative = false) => ({ id, symbol: `C${id}`, rank, pairs: 1, mcap: 1, vol: 1, stable: false, derivative });
+    const census = new Map([snap(1, 1), snap(2, 2, true), snap(3, 3), snap(4, 10)].map((s) => [s.id, s]));
+    const u = liveUniverse(census);
+    expect([...u.values()].map((c) => [c.id, c.rank])).toEqual([[1, 1], [3, 2], [4, 3]]);
+    expect(census.get(3)!.rank).toBe(3); // input not mutated
   });
 });

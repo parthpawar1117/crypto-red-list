@@ -36,6 +36,25 @@ export function looksDollarPegged(symbol: string, name: string | undefined, pric
   return /usd|dollar/i.test(label) || /^US[A-Z0-9]{0,3}$/.test(symbol);
 }
 
+const DERIVATIVE_TAGS = new Set(["rehypothecated-crypto", "liquid-staking-derivatives", "wrapped-tokens"]);
+
+/**
+ * Tokens that represent another asset (stETH, WBTC, JitoSOL, USDT0...). They
+ * are receipts, held rather than traded, so "thin trading" means nothing for
+ * them. CMC's live listings/latest already leaves them out; we drop them
+ * from historical snapshots too, so training, backtest and live rate the
+ * same universe.
+ */
+export function isDerivative(tags: CmcListingRow["tags"] | undefined): boolean {
+  return (tags ?? []).some((t) => DERIVATIVE_TAGS.has(typeof t === "string" ? t : t?.slug ?? ""));
+}
+
+/** Drop derivative tokens and re-rank the rest 1..n by CMC rank (new Map, input untouched). */
+export function liveUniverse(census: Map<number, CoinSnapshot>): Map<number, CoinSnapshot> {
+  const kept = [...census.values()].filter((c) => !c.derivative).sort((a, b) => a.rank - b.rank);
+  return new Map(kept.map((c, i) => [c.id, { ...c, rank: i + 1 }]));
+}
+
 const num = (v: number | null | undefined): number | null => (typeof v === "number" && Number.isFinite(v) ? v : null);
 
 export function fromCmcListing(row: CmcListingRow): CoinSnapshot {
@@ -50,5 +69,6 @@ export function fromCmcListing(row: CmcListingRow): CoinSnapshot {
     mcap: num(q.market_cap),
     vol: num(q.volume_24h),
     stable: isStablecoin(row.tags) || looksDollarPegged(row.symbol, row.name, q.price),
+    derivative: isDerivative(row.tags),
   };
 }

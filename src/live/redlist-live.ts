@@ -70,7 +70,8 @@ export async function buildLiveRedList(client: CmcClient, { now = new Date(), le
   const halfAgo = await historical(client, dates.halfAgo);
   const yearAgo = await historical(client, dates.yearAgo);
 
-  const today = latest.data.map(fromCmcListing);
+  // listings/latest already leaves out derivative tokens; filter again in case CMC changes that.
+  const today = latest.data.map(fromCmcListing).filter((c) => !c.derivative);
   const market = marketRatio(today, yearAgo);
   const coins: LiveCoin[] = today.map((c) => ({
     ...c,

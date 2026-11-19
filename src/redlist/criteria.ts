@@ -23,6 +23,8 @@ export interface CoinSnapshot {
   price?: number | null;
   /** Tagged as a stablecoin by CMC. */
   stable: boolean;
+  /** Represents another asset (wrapped, staked, bridged); left out of the universe. */
+  derivative?: boolean;
 }
 
 export interface Signal {
