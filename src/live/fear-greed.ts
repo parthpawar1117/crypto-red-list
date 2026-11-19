@@ -41,3 +41,16 @@ export function fearGreedOn(history: FearGreedDay[], date: string): FearGreedDay
   }
   return best;
 }
+
+/** One averaged point per calendar month (dated the 15th), so the chart shows the trend, not daily noise. */
+export function monthlyAverage(history: FearGreedDay[]): { date: string; value: number }[] {
+  const months = new Map<string, { sum: number; n: number }>();
+  for (const d of history) {
+    const key = d.date.slice(0, 7);
+    const m = months.get(key) ?? { sum: 0, n: 0 };
+    m.sum += d.value;
+    m.n++;
+    months.set(key, m);
+  }
+  return [...months.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([k, m]) => ({ date: `${k}-15`, value: Math.round((m.sum / m.n) * 10) / 10 }));
+}

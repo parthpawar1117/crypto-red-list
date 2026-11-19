@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getCachedFearGreed, getCachedRedList } from "@/live/cached";
+import { monthlyAverage } from "@/live/fear-greed";
 import backtest from "@/redlist/backtest-results.json";
 import { Evidence } from "@/web/components/Evidence";
 import { RliChart, type RliPoint } from "@/web/components/RliChart";
@@ -34,11 +35,11 @@ export default async function TimeMachinePage() {
             <div>
               <h2>The Crypto Red List Index, 2019 to today</h2>
               <p>
-                Solid line: the index (1.0 = every coin Least Concern; red dot = live). Dashed blue: CoinMarketCap&apos;s Fear &amp; Greed Index (0–100, right axis), available from mid-2023.
+                Solid line: the index (1.0 = every coin Least Concern; red dot = live). Dashed blue: CoinMarketCap&apos;s Fear &amp; Greed Index, monthly average (0–100, right axis), available from mid-2023.
               </p>
             </div>
           </div>
-          <RliChart points={points} fg={fg.history} />
+          <RliChart points={points} fg={monthlyAverage(fg.history)} />
         </div>
       </section>
 

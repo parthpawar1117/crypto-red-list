@@ -24,7 +24,8 @@ export default async function Home() {
   const lastQuarter = backtest.cohorts.find((c) => c.date === backtest.previousQuarter?.date)?.rli ?? null;
   const delta = list.rli != null && lastQuarter != null ? list.rli - lastQuarter : null;
   const nov22 = backtest.cohorts.find((c) => c.date === "2022-11-15")!;
-  const nov22Gone = (nov22.riskiest as TmCoin[]).slice(0, 6).filter((r) => r.vanished).length;
+  const nov22Named = nov22.riskiest.length;
+  const nov22Gone = (nov22.riskiest as TmCoin[]).filter((r) => r.vanished).length;
   const test = SHIPPED_MODEL.test;
 
   return (
@@ -115,7 +116,7 @@ export default async function Home() {
             <div>
               <h2>Does it work?</h2>
               <p>
-                On 15 November 2022 the list named six coins most at risk. <b>{nov22Gone} of them vanished</b> within a year, when only about 5% of coins normally do.
+                On 15 November 2022 the list named {nov22Named} coins most at risk. <b>{nov22Gone} of them vanished</b> within a year, when only about 4% of coins normally do.
                 Over all test years, the riskiest tenth of coins vanished {test.riskiestTenth.lift.toFixed(1)}× more often than average.
               </p>
             </div>

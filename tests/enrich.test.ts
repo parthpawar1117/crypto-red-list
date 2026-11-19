@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { createCmcClient, EvidenceLedger, type FetchLike } from "@/cmc/client";
 import { fetchCoinInfo, firstSentences } from "@/live/coin-info";
-import { fetchFearGreedHistory, fearGreedOn } from "@/live/fear-greed";
+import { fetchFearGreedHistory, fearGreedOn, monthlyAverage } from "@/live/fear-greed";
 import { TEST_KEY } from "./helpers";
 
 const ok = (data: unknown) => new Response(JSON.stringify({ status: { error_code: 0, credit_count: 1 }, data }), { status: 200 });
@@ -70,5 +70,19 @@ describe("fearGreedOn", () => {
   });
   it("returns null before the history starts", () => {
     expect(fearGreedOn(history, "2019-11-15")).toBeNull();
+  });
+});
+
+describe("monthlyAverage", () => {
+  it("smooths daily readings into one point per month, dated mid-month", () => {
+    const days = [
+      { date: "2024-01-01", value: 10, label: "" },
+      { date: "2024-01-31", value: 30, label: "" },
+      { date: "2024-02-10", value: 70, label: "" },
+    ];
+    expect(monthlyAverage(days)).toEqual([
+      { date: "2024-01-15", value: 20 },
+      { date: "2024-02-15", value: 70 },
+    ]);
   });
 });

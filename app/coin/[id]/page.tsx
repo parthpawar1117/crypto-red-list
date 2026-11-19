@@ -131,7 +131,7 @@ export default async function CoinPage({ params }: Props) {
                       ))}
                     </div>
                   </div>
-                  <span className="num">{s ? `${k === "D" ? (s.value < 0.01 ? "<0.01" : s.value.toFixed(2)) : Math.round(s.value)}${k === "D" ? "%" : "%"}` : <span className="muted small">no data</span>}</span>
+                  <span className="num">{s ? `${k === "D" ? (s.value < 0.01 ? "<0.01" : s.value.toFixed(2)) : Math.round(s.value)}${k === "D" ? "%" : "%"}` : <span className="muted small">{k === "A" && coin.young ? "not in top 3,000 a year ago" : k === "D" && coin.notes.length ? "volume not reported" : "no data"}</span>}</span>
                 </div>
               );
             })}
