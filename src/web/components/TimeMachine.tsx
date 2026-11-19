@@ -24,6 +24,7 @@ export interface TmCohort {
     byStatus: Record<string, { n: number; vanished: number }>;
     portfolio: { holdAll: number; exitRed: number };
   };
+  benchmark?: { cmc100: number | null };
 }
 
 const pct = (v: number) => `${v >= 0 ? "+" : ""}${(v * 100).toFixed(1)}%`;
@@ -109,6 +110,13 @@ export function TimeMachine({ cohorts, initial }: { cohorts: TmCohort[]; initial
             <b>{pct(c.outcome.portfolio.holdAll)}</b>
             <span className="small muted">selling EN/CR first: {pct(c.outcome.portfolio.exitRed)}</span>
           </div>
+          {c.benchmark?.cmc100 != null ? (
+            <div className="stat" style={{ borderTop: "5px solid var(--fg-line)" }}>
+              <span className="kicker">CMC100 index, same 12 months</span>
+              <b>{pct(c.benchmark.cmc100)}</b>
+              <span className="small muted">CoinMarketCap&apos;s big-cap benchmark</span>
+            </div>
+          ) : null}
         </div>
       ) : null}
     </div>

@@ -62,6 +62,18 @@ export default async function TimeMachinePage() {
               <span className="small muted">holding everything vs selling EN/CR</span>
             </div>
           </div>
+          {(() => {
+            const bench = backtest.cohorts.filter((c) => c.benchmark?.cmc100 != null && c.outcome);
+            if (!bench.length) return null;
+            const avg = (f: (c: (typeof bench)[number]) => number) => bench.reduce((s, c) => s + f(c), 0) / bench.length;
+            return (
+              <p className="note" style={{ marginBottom: 20 }}>
+                <b>Against CoinMarketCap&apos;s CMC100 ({bench.length} quarters since Feb 2024):</b> holding every top-500 coin equally returned{" "}
+                {(avg((c) => c.outcome!.portfolio.holdAll) * 100).toFixed(0)}% a year on average, the CMC100 {(avg((c) => c.benchmark!.cmc100!) * 100).toFixed(0)}%. The long
+                tail is where coins die. Selling Red-Listed coins narrowed that gap slightly in every quarter, but it is a filter for what to avoid, not a strategy that beats the index.
+              </p>
+            );
+          })()}
           <TimeMachine cohorts={backtest.cohorts as TmCohort[]} initial="2022-11-15" />
           <p className="small muted" style={{ marginTop: 16 }}>
             Assumptions: a coin that left CoinMarketCap&apos;s top 3,000 is counted as −95% (its price is unknown); single-coin gains are capped at +1000%. &ldquo;Vanished&rdquo; means

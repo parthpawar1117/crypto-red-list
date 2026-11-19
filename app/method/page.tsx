@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
+import { getCachedMarket } from "@/live/cached";
+import { Evidence } from "@/web/components/Evidence";
 import { SHIPPED_MODEL } from "@/redlist/shipped-model";
 import { FEATURE_NAMES } from "@/redlist/model";
 import { STATUS } from "@/web/status";
 
 export const metadata: Metadata = { title: "How it works" };
+export const revalidate = 21600;
 
 const pct = (v: number | null) => (v == null ? "–" : `${(v * 100).toFixed(1)}%`);
 
-export default function Method() {
+export default async function Method() {
   const m = SHIPPED_MODEL;
+  const { market, evidence } = await getCachedMarket();
+  const budget = market.budget;
   return (
     <main className="wrap narrow prose" style={{ padding: "36px 16px 48px" }}>
       <p className="kicker">Method · Crypto Red List v{m.version}</p>
@@ -83,6 +88,37 @@ export default function Method() {
         <li>&ldquo;Vanished&rdquo; means outside the top 3,000 twelve months later. A few coins come back, and wrapped tokens can drop out of CMC&apos;s rankings for listing reasons.</li>
         <li>Stablecoins that CoinMarketCap did not tag are caught by a backup rule (a dollar-like name and a price within 2% of $1); one or two may still slip through.</li>
       </ul>
+
+      <h2>Every CoinMarketCap endpoint, and why</h2>
+      <div className="table-wrap">
+        <table>
+          <thead><tr><th>Endpoint</th><th>What it powers</th><th>Refresh</th></tr></thead>
+          <tbody>
+            <tr><td className="mono small">/v1/cryptocurrency/listings/latest</td><td>Today&apos;s top 500: pairs, volume, market cap</td><td>6 h</td></tr>
+            <tr><td className="mono small">/v1/cryptocurrency/listings/historical</td><td>Snapshots 6 and 12 months back (signals A, B); the 33-quarter census behind training and the time machine</td><td>6 h</td></tr>
+            <tr><td className="mono small">/v2/cryptocurrency/info</td><td>Logos, summaries, websites and launch dates on assessment sheets</td><td>24 h</td></tr>
+            <tr><td className="mono small">/v3/fear-and-greed/historical</td><td>Market mood next to the Red List Index over time</td><td>24 h</td></tr>
+            <tr><td className="mono small">/v3/fear-and-greed/latest</td><td>Today&apos;s mood in the market strip</td><td>6 h</td></tr>
+            <tr><td className="mono small">/v1/global-metrics/quotes/latest</td><td>Total market cap, BTC dominance, altcoin share</td><td>6 h</td></tr>
+            <tr><td className="mono small">/v1/altcoin-season-index/historical</td><td>90-day altcoin season: why altcoins are under pressure</td><td>6 h</td></tr>
+            <tr><td className="mono small">/v3/index/cmc100-latest</td><td>&ldquo;Threatened inside the CMC100&rdquo;: index members the list flags</td><td>6 h</td></tr>
+            <tr><td className="mono small">/v3/index/cmc100-historical</td><td>The CMC100 benchmark in the time machine (quarterly since Feb 2024)</td><td>per backtest</td></tr>
+            <tr><td className="mono small">/v1/key/info</td><td>The live credit budget below (costs 0 credits)</td><td>6 h</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p className="small muted">All ten work on CoinMarketCap&apos;s free Basic plan. Worst case about 8.2k credits a month; any endpoint that is refused simply hides its panel.</p>
+      {budget ? (
+        <div className="stat" style={{ marginTop: 12 }}>
+          <span className="kicker">Live API budget (from /v1/key/info)</span>
+          <b>{budget.usedThisMonth.toLocaleString()} <span className="small muted">of {budget.monthlyLimit.toLocaleString()} credits used this month</span></b>
+          <div className="meter" aria-hidden="true" style={{ background: "var(--paper-2)" }}>
+            <span className="meter-mark" style={{ left: `${Math.min(100, (100 * budget.usedThisMonth) / budget.monthlyLimit).toFixed(2)}%` }} />
+          </div>
+          <span className="small muted">Rate limit {budget.perMinute} calls a minute.</span>
+        </div>
+      ) : null}
+      <div style={{ marginTop: 12 }}><Evidence entries={evidence} title="Market context calls" /></div>
 
       <h2>Use it</h2>
       <p>The full list is open JSON at <a href="/api/redlist"><code>/api/redlist</code></a>, with a citation for every CoinMarketCap call behind it. Code and tests: see the GitHub repository.</p>
