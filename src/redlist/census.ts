@@ -36,6 +36,18 @@ export function looksDollarPegged(symbol: string, name: string | undefined, pric
   return /usd|dollar/i.test(label) || /^US[A-Z0-9]{0,3}$/.test(symbol);
 }
 
+const TOKENIZED_TAGS = new Set(["tokenized-assets", "tokenized-gold", "tokenized-stock", "tokenized-etfs", "tokenized-commodities", "tokenized-treasury-bonds"]);
+
+/**
+ * Tokenized real-world assets (gold, stocks, ETFs, bonds). Their value tracks
+ * something outside crypto and many are held, not traded, so like
+ * stablecoins they are Not Evaluated. Protocols such as ONDO or LINK
+ * ("real-world-assets-protocols") are ordinary coins and still rated.
+ */
+export function isTokenizedAsset(tags: CmcListingRow["tags"] | undefined): boolean {
+  return (tags ?? []).some((t) => TOKENIZED_TAGS.has(typeof t === "string" ? t : t?.slug ?? ""));
+}
+
 const DERIVATIVE_TAGS = new Set(["rehypothecated-crypto", "liquid-staking-derivatives", "wrapped-tokens"]);
 
 /**
@@ -68,7 +80,7 @@ export function fromCmcListing(row: CmcListingRow): CoinSnapshot {
     price: num(q.price),
     mcap: num(q.market_cap),
     vol: num(q.volume_24h),
-    stable: isStablecoin(row.tags) || looksDollarPegged(row.symbol, row.name, q.price),
+    stable: isStablecoin(row.tags) || looksDollarPegged(row.symbol, row.name, q.price) || isTokenizedAsset(row.tags),
     derivative: isDerivative(row.tags),
   };
 }

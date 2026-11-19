@@ -22,7 +22,7 @@ export const STATUS: Record<RedListStatus, StatusMeta> = {
   NT: { name: "Near Threatened", color: "#cce226", ink: "#1d1a16", meaning: "5–10% chance, around the market's normal rate" },
   LC: { name: "Least Concern", color: "#60c659", ink: "#1d1a16", meaning: "Under 5% chance of vanishing within 12 months" },
   DD: { name: "Data Deficient", color: "#d1d1c6", ink: "#1d1a16", meaning: "Under 6 months of history: too new to judge" },
-  NE: { name: "Not Evaluated", color: "#ffffff", ink: "#1d1a16", meaning: "Stablecoins are built to hold a peg, so they are not judged" },
+  NE: { name: "Not Evaluated", color: "#ffffff", ink: "#1d1a16", meaning: "Stablecoins and tokenized gold, stocks or ETFs track something else, so they are not judged" },
 };
 
 export const THREATENED: RedListStatus[] = ["CR", "EN", "VU"];

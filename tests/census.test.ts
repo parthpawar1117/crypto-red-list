@@ -92,3 +92,19 @@ describe("liveUniverse", () => {
     expect(census.get(3)!.rank).toBe(3); // input not mutated
   });
 });
+
+import { isTokenizedAsset } from "@/redlist/census";
+
+describe("isTokenizedAsset (tokenized gold, stocks, ETFs: tracks an asset outside crypto)", () => {
+  it("uses CMC's tokenized-asset tags", () => {
+    expect(isTokenizedAsset(["tokenized-assets", "tokenized-etfs", "ondo-stocks-ecosystem"])).toBe(true);
+    expect(isTokenizedAsset(["tokenized-gold"])).toBe(true);
+    expect(isTokenizedAsset(["tokenized-stock", "xstocks-ecosystem"])).toBe(true);
+    expect(isTokenizedAsset(["real-world-assets-protocols"])).toBe(false); // ONDO, LINK: protocols, not receipts
+  });
+
+  it("makes fromCmcListing mark the coin Not Evaluated, like a stablecoin", () => {
+    const row = { id: 1, symbol: "IVVon", name: "iShares Core S&P 500 Tokenized ETF (Ondo)", cmc_rank: 305, tags: ["tokenized-assets", "tokenized-etfs"], quote: { USD: { price: 680 } } };
+    expect(fromCmcListing(row).stable).toBe(true);
+  });
+});

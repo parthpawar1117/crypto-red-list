@@ -101,7 +101,7 @@ export default async function CoinPage({ params }: Props) {
                       {coin.reasons.map((r) => <li key={r}>{r}</li>)}
                     </ul>
                   ) : coin.status === "NE" ? (
-                    <span>Stablecoins are designed to hold a peg, so they are not evaluated.</span>
+                    <span>This coin is built to track something else (a currency, gold, a stock or a fund), so it is not evaluated.</span>
                   ) : coin.status === "DD" ? (
                     <span>CoinMarketCap has under 6 months of history for this coin, so it is too new to judge.</span>
                   ) : (

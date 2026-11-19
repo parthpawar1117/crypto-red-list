@@ -2,8 +2,8 @@
  * One coin's Red List assessment: signals -> probability -> status -> reasons.
  *
  * Two IUCN categories keep the list honest:
- * - NE (Not Evaluated): stablecoins. They are built to hold a peg, so
- *   "falling behind the market" means nothing for them.
+ * - NE (Not Evaluated): stablecoins and tokenized real-world assets. They
+ *   track something else, so "falling behind the market" means nothing for them.
  * - DD (Data Deficient): coins without a 6-month-old snapshot. Too new to
  *   judge, so we say so instead of guessing.
  */

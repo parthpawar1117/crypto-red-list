@@ -21,7 +21,7 @@ export interface CoinSnapshot {
   /** 24h volume in USD. */
   vol: number | null;
   price?: number | null;
-  /** Tagged as a stablecoin by CMC. */
+  /** Built to track something else (stablecoin or tokenized real-world asset): Not Evaluated. */
   stable: boolean;
   /** Represents another asset (wrapped, staked, bridged); left out of the universe. */
   derivative?: boolean;
