@@ -586,6 +586,20 @@
    "40980": "DD"
   }
  },
+ "cmc100Values": {
+  "2024-02-15": 118.26,
+  "2024-05-15": 136.74,
+  "2024-08-15": 126.48,
+  "2024-11-15": 178.85,
+  "2025-02-15": 198.02,
+  "2025-05-15": 202.97,
+  "2025-08-15": 245.1,
+  "2025-11-15": 190.37,
+  "2026-02-15": 137.97,
+  "2026-05-15": 156.52,
+  "2026-08-15": 123.05,
+  "2026-11-15": 123.69
+ },
  "cohorts": [
   {
    "date": "2019-11-15",
@@ -759,7 +773,10 @@
      "exitRed": 0.1753
     }
    },
-   "split": "train"
+   "split": "train",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2020-02-15",
@@ -933,7 +950,10 @@
      "exitRed": 1.5986
     }
    },
-   "split": "train"
+   "split": "train",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2020-05-15",
@@ -1103,7 +1123,10 @@
      "exitRed": 4.7116
     }
    },
-   "split": "train"
+   "split": "train",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2020-08-15",
@@ -1275,7 +1298,10 @@
      "exitRed": 1.9326
     }
    },
-   "split": "train"
+   "split": "train",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2020-11-15",
@@ -1452,7 +1478,10 @@
      "exitRed": 3.2409
     }
    },
-   "split": "train"
+   "split": "train",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2021-02-15",
@@ -1623,7 +1652,10 @@
      "exitRed": 0.4407
     }
    },
-   "split": "train"
+   "split": "train",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2021-05-15",
@@ -1801,7 +1833,10 @@
      "exitRed": -0.5808
     }
    },
-   "split": "train"
+   "split": "train",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2021-08-15",
@@ -1975,7 +2010,10 @@
      "exitRed": -0.5672
     }
    },
-   "split": "train"
+   "split": "train",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2021-11-15",
@@ -2154,7 +2192,10 @@
      "exitRed": -0.7979
     }
    },
-   "split": "train"
+   "split": "train",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2022-02-15",
@@ -2322,7 +2363,10 @@
      "exitRed": -0.6115
     }
    },
-   "split": "gap"
+   "split": "gap",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2022-05-15",
@@ -2488,7 +2532,10 @@
      "exitRed": -0.4089
     }
    },
-   "split": "gap"
+   "split": "gap",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2022-08-15",
@@ -2653,7 +2700,10 @@
      "exitRed": -0.4189
     }
    },
-   "split": "gap"
+   "split": "gap",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2022-11-15",
@@ -2817,7 +2867,10 @@
      "exitRed": 0.2284
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2023-02-15",
@@ -2983,7 +3036,10 @@
      "exitRed": 0.1353
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2023-05-15",
@@ -3148,7 +3204,10 @@
      "exitRed": 0.5142
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2023-08-15",
@@ -3315,7 +3374,10 @@
      "exitRed": 0.0853
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2023-11-15",
@@ -3482,7 +3544,10 @@
      "exitRed": 0.0942
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2024-02-15",
@@ -3648,7 +3713,10 @@
      "exitRed": -0.1882
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": 0.6744
+   }
   },
   {
    "date": "2024-05-15",
@@ -3814,7 +3882,10 @@
      "exitRed": -0.4059
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": 0.4843
+   }
   },
   {
    "date": "2024-08-15",
@@ -3979,7 +4050,10 @@
      "exitRed": -0.1138
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": 0.9379
+   }
   },
   {
    "date": "2024-11-15",
@@ -4144,7 +4218,10 @@
      "exitRed": -0.5138
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": 0.0644
+   }
   },
   {
    "date": "2025-02-15",
@@ -4311,7 +4388,10 @@
      "exitRed": -0.66
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": -0.3033
+   }
   },
   {
    "date": "2025-05-15",
@@ -4477,7 +4557,10 @@
      "exitRed": -0.6097
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": -0.2289
+   }
   },
   {
    "date": "2025-08-15",
@@ -4644,7 +4727,10 @@
      "exitRed": -0.6896
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": -0.498
+   }
   },
   {
    "date": "2025-11-15",
@@ -4810,7 +4896,10 @@
      "exitRed": -0.5291
     }
    },
-   "split": "test"
+   "split": "test",
+   "benchmark": {
+    "cmc100": -0.3503
+   }
   },
   {
    "date": "2026-02-15",
@@ -4929,7 +5018,10 @@
     }
    ],
    "outcome": null,
-   "split": "no outcome yet"
+   "split": "no outcome yet",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2026-05-15",
@@ -5046,7 +5138,10 @@
     }
    ],
    "outcome": null,
-   "split": "no outcome yet"
+   "split": "no outcome yet",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2026-08-15",
@@ -5164,7 +5259,10 @@
     }
    ],
    "outcome": null,
-   "split": "no outcome yet"
+   "split": "no outcome yet",
+   "benchmark": {
+    "cmc100": null
+   }
   },
   {
    "date": "2026-11-15",
@@ -5282,7 +5380,10 @@
     }
    ],
    "outcome": null,
-   "split": "no outcome yet"
+   "split": "no outcome yet",
+   "benchmark": {
+    "cmc100": null
+   }
   }
  ]
 }

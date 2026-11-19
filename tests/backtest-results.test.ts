@@ -33,6 +33,12 @@ describe("published backtest results", () => {
     for (const s of statuses) expect(["CR", "EN", "VU", "NT", "LC", "DD", "NE"]).toContain(s);
   });
 
+  it("benchmark the strategies against CMC's own CMC100 index where it existed (Feb 2024 on)", () => {
+    const withBench = results.cohorts.filter((c) => c.benchmark?.cmc100 != null);
+    expect(withBench.map((c) => c.date)).toEqual(["2024-02-15", "2024-05-15", "2024-08-15", "2024-11-15", "2025-02-15", "2025-05-15", "2025-08-15", "2025-11-15"]);
+    expect(Object.keys(results.cmc100Values).length).toBeGreaterThanOrEqual(12);
+  });
+
   it("contain derived results only, never raw CMC market data", () => {
     const text = JSON.stringify(results);
     for (const raw of ["market_cap", "volume_24h", "num_market_pairs", "\"mcap\"", "\"vol\"", "\"pairs\""]) expect(text).not.toContain(raw);
