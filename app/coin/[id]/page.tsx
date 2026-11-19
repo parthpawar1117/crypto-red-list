@@ -150,6 +150,15 @@ export default async function CoinPage({ params }: Props) {
           </div>
         </div>
 
+        <div className="field">
+          <dt>Embed this status</dt>
+          <dd>
+            <img src={`/badge/${coin.id}.svg`} alt={`Red List status badge for ${coin.symbol}`} height={20} />
+            <pre className="embed">{`[![Red List status](https://crypto-red-list.vercel.app/badge/${coin.id}.svg)](https://crypto-red-list.vercel.app/coin/${coin.id})`}</pre>
+            <span className="small muted">Paste into any README. It updates every 6 hours.</span>
+          </dd>
+        </div>
+
         <div style={{ marginTop: 24 }}>
           <Evidence entries={[...list.evidence, ...data.infoEvidence]} title="Receipts" />
         </div>
