@@ -8,12 +8,14 @@
  *   Red List        62 credits x 4 a day   ~7.4k / month
  *   coin info        5 credits x 1 a day   ~150 / month
  *   fear & greed     3 credits x 1 a day   ~90 / month
- *   total                                  ~7.7k / month  (< 10k on CMC Basic)
+ *   market context   4 credits x 4 a day   ~480 / month
+ *   total                                  ~8.2k / month  (< 10k on CMC Basic)
  */
 import { unstable_cache } from "next/cache";
 import { createCmcClient, EvidenceLedger, type EvidenceEntry } from "../cmc/client";
 import { fetchCoinInfo, type CoinInfo } from "./coin-info";
 import { fetchFearGreedHistory, type FearGreedDay } from "./fear-greed";
+import { fetchMarketContext, type MarketContext } from "./market";
 import { getRedList, REFRESH_SECONDS } from "./get-redlist";
 import type { EvidenceSummary } from "./redlist-live";
 import { SHIPPED_WEIGHTS } from "../redlist/shipped-model";
@@ -62,4 +64,20 @@ export const getCachedFearGreed = unstable_cache(
   },
   ["fear-greed-v1"],
   { revalidate: DAY, tags: ["fear-greed"] },
+);
+
+export interface CachedMarket {
+  market: MarketContext;
+  evidence: EvidenceSummary[];
+}
+
+export const getCachedMarket = unstable_cache(
+  async (): Promise<CachedMarket> => {
+    const ledger = new EvidenceLedger();
+    const client = createCmcClient({ apiKey: process.env.CMC_PRO_API_KEY, ledger });
+    const market = await fetchMarketContext(client);
+    return { market, evidence: summarize(ledger.entries()) };
+  },
+  ["market-v1"],
+  { revalidate: REFRESH_SECONDS, tags: ["market"] },
 );

@@ -16,9 +16,11 @@ export interface CoinRow {
   logo: string | null;
   change: ReturnType<typeof statusChange>;
   previous: RedListStatus | null;
+  /** Member of CMC's flagship CMC100 index right now. */
+  inCmc100: boolean;
 }
 
-export function toRows(list: LiveRedList, info: Record<number, CoinInfo>, previous: Record<string, string> | null): CoinRow[] {
+export function toRows(list: LiveRedList, info: Record<number, CoinInfo>, previous: Record<string, string> | null, cmc100Ids: Set<number> = new Set()): CoinRow[] {
   return list.coins.map((c) => {
     const prev = (previous?.[String(c.id)] as RedListStatus | undefined) ?? undefined;
     return {
@@ -33,6 +35,7 @@ export function toRows(list: LiveRedList, info: Record<number, CoinInfo>, previo
       logo: info[c.id]?.logo ?? null,
       change: statusChange(prev, c.status),
       previous: prev ?? null,
+      inCmc100: cmc100Ids.has(c.id),
     };
   });
 }

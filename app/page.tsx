@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getCachedCoinInfo, getCachedRedList } from "@/live/cached";
+import { getCachedCoinInfo, getCachedMarket, getCachedRedList } from "@/live/cached";
 import backtest from "@/redlist/backtest-results.json";
 import { SHIPPED_MODEL } from "@/redlist/shipped-model";
 import { CensusBar } from "@/web/components/Status";
@@ -8,6 +8,7 @@ import { FieldCheck } from "@/web/components/FieldCheck";
 import { Register } from "@/web/components/Register";
 import { RliChart, type RliPoint } from "@/web/components/RliChart";
 import { Specimen } from "@/web/components/Specimen";
+import { MarketStrip } from "@/web/components/MarketStrip";
 import type { TmCoin } from "@/web/components/TimeMachine";
 import { THREATENED } from "@/web/status";
 import { fmtDate, toRows } from "@/web/view";
@@ -15,8 +16,10 @@ import { fmtDate, toRows } from "@/web/view";
 export const revalidate = 21600;
 
 export default async function Home() {
-  const [list, coinInfo] = await Promise.all([getCachedRedList(), getCachedCoinInfo()]);
-  const rows = toRows(list, coinInfo.info, backtest.previousQuarter?.statuses ?? null);
+  const [list, coinInfo, { market, evidence: marketEvidence }] = await Promise.all([getCachedRedList(), getCachedCoinInfo(), getCachedMarket()]);
+  const cmc100Ids = new Set(market.cmc100?.members.map((m) => m.id) ?? []);
+  const rows = toRows(list, coinInfo.info, backtest.previousQuarter?.statuses ?? null, cmc100Ids);
+  const indexThreatened = rows.filter((r) => r.inCmc100 && THREATENED.includes(r.status));
   const threatened = rows.filter((r) => THREATENED.includes(r.status));
   const uplisted = rows.filter((r) => r.change === "uplisted");
   const history: RliPoint[] = backtest.cohorts.filter((c) => c.rli != null).map((c) => ({ date: c.date, rli: c.rli! }));
@@ -57,6 +60,7 @@ export default async function Home() {
         </div>
         <div className="wrap">
           <CensusBar counts={list.counts} />
+          <MarketStrip market={market} />
         </div>
       </section>
 
@@ -79,6 +83,30 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {market.cmc100 ? (
+        <section className="section">
+          <div className="wrap">
+            <div className="section-head">
+              <div>
+                <h2>Threatened inside the CMC100</h2>
+                <p>
+                  {indexThreatened.length
+                    ? `${indexThreatened.length} of the 100 coins in CoinMarketCap's own flagship index are rated Vulnerable or worse. Being big does not make a coin safe.`
+                    : "None of the 100 coins in CoinMarketCap's flagship index is rated Vulnerable or worse today."}
+                </p>
+              </div>
+            </div>
+            {indexThreatened.length ? (
+              <div className="cards">
+                {indexThreatened.map((c) => (
+                  <Specimen key={c.id} coin={c} />
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
 
       {uplisted.length ? (
         <section className="section">
@@ -135,7 +163,7 @@ export default async function Home() {
           </div>
           <Register coins={rows} />
           <div style={{ marginTop: 16 }}>
-            <Evidence entries={[...list.evidence, ...coinInfo.evidence]} />
+            <Evidence entries={[...list.evidence, ...coinInfo.evidence, ...marketEvidence]} />
           </div>
         </div>
       </section>

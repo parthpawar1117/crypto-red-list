@@ -214,3 +214,32 @@ textarea { width: 100%; min-height: 84px; resize: vertical; font-family: var(--m
 .site-foot .wrap { display: grid; gap: 8px; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------- market strip ---------- */
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; margin-top: 18px; }
+.strip > div { background: var(--card); padding: 10px 14px; display: grid; gap: 2px; }
+.strip b { font-size: 1.05rem; font-weight: 600; }
+.strip small { font-size: 0.75rem; font-weight: 400; color: var(--muted); }
+.strip small.down { color: var(--accent); }
+.spark-row { display: flex; align-items: center; gap: 10px; }
+.spark path { fill: none; stroke: var(--fg-line); stroke-width: 1.6; }
+.spark-ref { stroke: var(--rule); stroke-dasharray: 2 2; }
+.index-badge { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; border: 1px solid var(--rule-strong); border-radius: 3px; padding: 0 4px; color: var(--ink-2); }
+
+/* ---------- motion (purposeful, and off for people who ask for less) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .census-bar span { transform-origin: left; animation: grow 900ms cubic-bezier(.2,.7,.2,1) both; }
+  .census-bar span:nth-child(2) { animation-delay: 60ms; } .census-bar span:nth-child(3) { animation-delay: 120ms; }
+  .census-bar span:nth-child(4) { animation-delay: 180ms; } .census-bar span:nth-child(5) { animation-delay: 240ms; }
+  .census-bar span:nth-child(6) { animation-delay: 300ms; } .census-bar span:nth-child(7) { animation-delay: 360ms; }
+  .chart .rli-line { stroke-dasharray: 2400; stroke-dashoffset: 2400; animation: draw 1800ms ease-out 200ms forwards; }
+  .chart .dot.live { animation: pulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .cards .specimen { animation: rise 500ms ease-out both; }
+  .cards .specimen:nth-child(2) { animation-delay: 40ms; } .cards .specimen:nth-child(3) { animation-delay: 80ms; }
+  .cards .specimen:nth-child(4) { animation-delay: 120ms; } .cards .specimen:nth-child(n+5) { animation-delay: 160ms; }
+  .index-value { animation: rise 600ms ease-out both; }
+}
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.5); } }

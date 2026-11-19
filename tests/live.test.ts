@@ -80,7 +80,7 @@ describe("refresh schedule", () => {
     const { REFRESH_SECONDS } = await import("@/live/get-redlist");
     const { readFileSync } = await import("node:fs");
     expect(readFileSync("app/api/redlist/route.ts", "utf8")).toContain(`export const revalidate = ${REFRESH_SECONDS};`);
-    const creditsPerRefresh = 62;
+    const creditsPerRefresh = 62 + 4; // Red List + market context, refreshed together
     const perMonth = (30 * 86400 / REFRESH_SECONDS) * creditsPerRefresh;
     expect(perMonth).toBeLessThan(10_000);
   });

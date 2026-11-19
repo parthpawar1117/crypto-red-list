@@ -24,6 +24,7 @@ export function Specimen({ coin }: { coin: CoinRow }) {
         <StatusChip status={coin.status} />
         {coin.criteria ? <span className="mono small muted">criteria {coin.criteria}</span> : null}
         {coin.change === "uplisted" ? <span className="mono small" style={{ color: "var(--accent)" }}>▲ uplisted</span> : null}
+        {coin.inCmc100 ? <span className="index-badge" title="Member of CMC's CMC100 index">CMC100</span> : null}
       </div>
       <ul className="reasons">
         {coin.reasons.slice(0, 2).map((r) => (
