@@ -10,12 +10,12 @@
     "young"
   ],
   "weights": [
-    -3.8313,
-    0.2513,
-    0.8059,
-    1.3006,
-    2.8117,
-    0.5073
+    -3.8281,
+    0.2486,
+    0.8079,
+    1.2994,
+    2.8091,
+    0.5082
   ],
   "thresholds": {
     "CR": 0.4,
@@ -26,33 +26,33 @@
   "train": {
     "from": "2019-11-15",
     "to": "2021-11-15",
-    "coinQuarters": 3688,
+    "coinQuarters": 3681,
     "cohorts": 9,
-    "baseRate": 0.0569,
-    "auc": 0.7732,
-    "aucRankOnly": 0.564,
+    "baseRate": 0.057,
+    "auc": 0.773,
+    "aucRankOnly": 0.5636,
     "riskiestTenth": {
-      "rate": 0.2385,
+      "rate": 0.2391,
       "lift": 4.19
     },
     "byStatus": {
       "LC": {
-        "n": 2929,
+        "n": 2922,
         "vanished": 81,
         "rate": 0.0277,
-        "predicted": 0.0296
+        "predicted": 0.0297
       },
       "NT": {
         "n": 330,
         "vanished": 30,
         "rate": 0.0909,
-        "predicted": 0.0722
+        "predicted": 0.0723
       },
       "VU": {
         "n": 231,
         "vanished": 38,
         "rate": 0.1645,
-        "predicted": 0.1547
+        "predicted": 0.1548
       },
       "EN": {
         "n": 159,
@@ -64,33 +64,33 @@
         "n": 39,
         "vanished": 16,
         "rate": 0.4103,
-        "predicted": 0.4837
+        "predicted": 0.4835
       }
     }
   },
   "test": {
     "from": "2022-11-15",
     "to": "2025-11-15",
-    "coinQuarters": 5553,
+    "coinQuarters": 5526,
     "cohorts": 13,
     "baseRate": 0.0409,
-    "auc": 0.749,
-    "aucRankOnly": 0.5818,
+    "auc": 0.7479,
+    "aucRankOnly": 0.5805,
     "riskiestTenth": {
-      "rate": 0.2108,
-      "lift": 5.16
+      "rate": 0.2098,
+      "lift": 5.13
     },
     "byStatus": {
       "LC": {
-        "n": 4918,
+        "n": 4896,
         "vanished": 108,
-        "rate": 0.022,
+        "rate": 0.0221,
         "predicted": 0.0271
       },
       "NT": {
-        "n": 295,
+        "n": 292,
         "vanished": 15,
-        "rate": 0.0508,
+        "rate": 0.0514,
         "predicted": 0.0755
       },
       "VU": {
@@ -100,10 +100,10 @@
         "predicted": 0.1595
       },
       "EN": {
-        "n": 80,
-        "vanished": 38,
-        "rate": 0.475,
-        "predicted": 0.2771
+        "n": 78,
+        "vanished": 37,
+        "rate": 0.4744,
+        "predicted": 0.2778
       },
       "CR": {
         "n": 10,

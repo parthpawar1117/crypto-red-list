@@ -9,26 +9,26 @@
   "test": {
    "from": "2022-11-15",
    "to": "2025-11-15",
-   "coinQuarters": 5553,
+   "coinQuarters": 5526,
    "cohorts": 13,
    "baseRate": 0.0409,
-   "auc": 0.749,
-   "aucRankOnly": 0.5818,
+   "auc": 0.7479,
+   "aucRankOnly": 0.5805,
    "riskiestTenth": {
-    "rate": 0.2108,
-    "lift": 5.16
+    "rate": 0.2098,
+    "lift": 5.13
    },
    "byStatus": {
     "LC": {
-     "n": 4918,
+     "n": 4896,
      "vanished": 108,
-     "rate": 0.022,
+     "rate": 0.0221,
      "predicted": 0.0271
     },
     "NT": {
-     "n": 295,
+     "n": 292,
      "vanished": 15,
-     "rate": 0.0508,
+     "rate": 0.0514,
      "predicted": 0.0755
     },
     "VU": {
@@ -38,10 +38,10 @@
      "predicted": 0.1595
     },
     "EN": {
-     "n": 80,
-     "vanished": 38,
-     "rate": 0.475,
-     "predicted": 0.2771
+     "n": 78,
+     "vanished": 37,
+     "rate": 0.4744,
+     "predicted": 0.2778
     },
     "CR": {
      "n": 10,
@@ -60,24 +60,24 @@
  "portfolio": {
   "all": {
    "cohorts": 25,
-   "avgHoldAll": 0.2355,
-   "avgExitRed": 0.2432,
+   "avgHoldAll": 0.2348,
+   "avgExitRed": 0.2425,
    "exitBetterIn": 21,
    "worstCohort": {
     "date": "2021-11-15",
-    "holdAll": -0.8298,
-    "exitRed": -0.7961
+    "holdAll": -0.8316,
+    "exitRed": -0.7979
    }
   },
   "test": {
    "cohorts": 13,
-   "avgHoldAll": -0.2122,
-   "avgExitRed": -0.2014,
+   "avgHoldAll": -0.2147,
+   "avgExitRed": -0.2041,
    "exitBetterIn": 13,
    "worstCohort": {
     "date": "2025-08-15",
-    "holdAll": -0.6937,
-    "exitRed": -0.6847
+    "holdAll": -0.6986,
+    "exitRed": -0.6896
    }
   }
  },
@@ -175,14 +175,14 @@
    "4679": "LC",
    "4687": "NE",
    "4691": "LC",
-   "4705": "LC",
+   "4705": "NE",
    "4846": "LC",
    "4847": "LC",
    "4943": "NE",
    "4944": "LC",
    "4948": "LC",
    "5034": "LC",
-   "5176": "LC",
+   "5176": "NE",
    "5198": "LC",
    "5275": "LC",
    "5350": "LC",
@@ -397,7 +397,7 @@
    "34083": "LC",
    "34104": "LC",
    "34118": "LC",
-   "34212": "LC",
+   "34212": "NE",
    "34261": "NT",
    "34332": "DD",
    "34387": "NE",
@@ -461,13 +461,13 @@
    "36902": "DD",
    "36912": "DD",
    "36922": "LC",
-   "36992": "LC",
-   "37003": "LC",
-   "37004": "LC",
-   "37005": "LC",
-   "37006": "LC",
-   "37013": "LC",
-   "37057": "LC",
+   "36992": "NE",
+   "37003": "NE",
+   "37004": "NE",
+   "37005": "NE",
+   "37006": "NE",
+   "37013": "NE",
+   "37057": "NE",
    "37070": "LC",
    "37166": "LC",
    "37263": "VU",
@@ -480,13 +480,13 @@
    "37614": "DD",
    "37745": "LC",
    "37986": "LC",
-   "38014": "LC",
-   "38034": "LC",
-   "38051": "NT",
-   "38056": "LC",
-   "38067": "LC",
-   "38093": "LC",
-   "38094": "LC",
+   "38014": "NE",
+   "38034": "NE",
+   "38051": "NE",
+   "38056": "NE",
+   "38067": "NE",
+   "38093": "NE",
+   "38094": "NE",
    "38127": "LC",
    "38136": "LC",
    "38151": "EN",
@@ -558,9 +558,9 @@
    "39683": "NE",
    "39686": "DD",
    "39689": "DD",
-   "39711": "DD",
+   "39711": "NE",
    "39720": "DD",
-   "39769": "DD",
+   "39769": "NE",
    "39797": "DD",
    "39841": "DD",
    "39870": "DD",
@@ -568,16 +568,16 @@
    "39922": "DD",
    "39965": "DD",
    "40092": "DD",
-   "40212": "DD",
-   "40213": "DD",
-   "40216": "DD",
-   "40217": "DD",
-   "40218": "DD",
+   "40212": "NE",
+   "40213": "NE",
+   "40216": "NE",
+   "40217": "NE",
+   "40218": "NE",
    "40224": "DD",
    "40531": "DD",
    "40558": "DD",
    "40588": "DD",
-   "40643": "DD",
+   "40643": "NE",
    "40809": "DD",
    "40814": "DD",
    "40939": "DD",
@@ -596,8 +596,8 @@
     "VU": 36,
     "NT": 38,
     "LC": 293,
-    "DD": 75,
-    "NE": 18
+    "DD": 74,
+    "NE": 19
    },
    "riskiest": [
     {
@@ -631,7 +631,7 @@
      "symbol": "CAS",
      "rank": 431,
      "status": "CR",
-     "probability": 0.449,
+     "probability": 0.448,
      "reasons": [
       "Lost 83% of its exchange pairs in 6 months",
       "Trades only 0.06% of its value per day"
@@ -657,7 +657,7 @@
      "symbol": "NOAH",
      "rank": 154,
      "status": "CR",
-     "probability": 0.428,
+     "probability": 0.427,
      "reasons": [
       "Lost 46% of its exchange pairs in 6 months",
       "Trades less than 0.01% of its value per day"
@@ -770,8 +770,8 @@
     "VU": 36,
     "NT": 39,
     "LC": 317,
-    "DD": 50,
-    "NE": 20
+    "DD": 49,
+    "NE": 21
    },
    "riskiest": [
     {
@@ -779,7 +779,7 @@
      "symbol": "NOAH",
      "rank": 141,
      "status": "CR",
-     "probability": 0.507,
+     "probability": 0.506,
      "reasons": [
       "Lost 69% of its exchange pairs in 6 months",
       "Trades less than 0.01% of its value per day"
@@ -828,20 +828,6 @@
      "ret": 1.479
     },
     {
-     "id": 2021,
-     "symbol": "RHOC",
-     "rank": 425,
-     "status": "CR",
-     "probability": 0.418,
-     "reasons": [
-      "Fell 46% behind the overall market in 12 months",
-      "Lost 57% of its exchange pairs in 6 months",
-      "Trades only 0.04% of its value per day"
-     ],
-     "vanished": false,
-     "ret": 1.328
-    },
-    {
      "id": 3115,
      "symbol": "MXM",
      "rank": 74,
@@ -853,6 +839,20 @@
      ],
      "vanished": true,
      "ret": null
+    },
+    {
+     "id": 2021,
+     "symbol": "RHOC",
+     "rank": 425,
+     "status": "CR",
+     "probability": 0.417,
+     "reasons": [
+      "Fell 46% behind the overall market in 12 months",
+      "Lost 57% of its exchange pairs in 6 months",
+      "Trades only 0.04% of its value per day"
+     ],
+     "vanished": false,
+     "ret": 1.328
     },
     {
      "id": 3085,
@@ -943,9 +943,9 @@
     "EN": 2,
     "VU": 8,
     "NT": 39,
-    "LC": 389,
+    "LC": 388,
     "DD": 44,
-    "NE": 18
+    "NE": 19
    },
    "riskiest": [
     {
@@ -966,7 +966,7 @@
      "symbol": "ERC20",
      "rank": 114,
      "status": "EN",
-     "probability": 0.207,
+     "probability": 0.208,
      "reasons": [
       "Lost 25% of its exchange pairs in 6 months",
       "Trades only 0.11% of its value per day"
@@ -1005,7 +1005,7 @@
      "symbol": "FXC",
      "rank": 75,
      "status": "VU",
-     "probability": 0.156,
+     "probability": 0.157,
      "reasons": [
       "Trades only 0.08% of its value per day"
      ],
@@ -1094,28 +1094,28 @@
       "vanished": 4
      },
      "LC": {
-      "n": 389,
+      "n": 388,
       "vanished": 16
      }
     },
     "portfolio": {
-     "holdAll": 4.7034,
-     "exitRed": 4.701
+     "holdAll": 4.714,
+     "exitRed": 4.7116
     }
    },
    "split": "train"
   },
   {
    "date": "2020-08-15",
-   "rli": 0.9597,
+   "rli": 0.9596,
    "counts": {
     "CR": 0,
     "EN": 7,
     "VU": 14,
     "NT": 37,
-    "LC": 369,
+    "LC": 368,
     "DD": 57,
-    "NE": 16
+    "NE": 17
    },
    "riskiest": [
     {
@@ -1136,7 +1136,7 @@
      "symbol": "CCA",
      "rank": 146,
      "status": "EN",
-     "probability": 0.295,
+     "probability": 0.296,
      "reasons": [
       "Lost 67% of its exchange pairs in 6 months",
       "Trades only 0.24% of its value per day"
@@ -1161,7 +1161,7 @@
      "symbol": "HEX",
      "rank": 27,
      "status": "EN",
-     "probability": 0.231,
+     "probability": 0.232,
      "reasons": [
       "Trades only 0.12% of its value per day"
      ],
@@ -1266,28 +1266,28 @@
       "vanished": 6
      },
      "LC": {
-      "n": 369,
+      "n": 368,
       "vanished": 17
      }
     },
     "portfolio": {
-     "holdAll": 1.9692,
-     "exitRed": 1.9279
+     "holdAll": 1.974,
+     "exitRed": 1.9326
     }
    },
    "split": "train"
   },
   {
    "date": "2020-11-15",
-   "rli": 0.8783,
+   "rli": 0.878,
    "counts": {
     "CR": 12,
     "EN": 22,
     "VU": 45,
     "NT": 29,
-    "LC": 275,
+    "LC": 274,
     "DD": 96,
-    "NE": 21
+    "NE": 22
    },
    "riskiest": [
     {
@@ -1389,7 +1389,7 @@
      "symbol": "B2B",
      "rank": 397,
      "status": "CR",
-     "probability": 0.458,
+     "probability": 0.457,
      "reasons": [
       "Lost 40% of its exchange pairs in 6 months",
       "Trades less than 0.01% of its value per day"
@@ -1443,28 +1443,28 @@
       "vanished": 5
      },
      "LC": {
-      "n": 275,
+      "n": 274,
       "vanished": 14
      }
     },
     "portfolio": {
-     "holdAll": 3.2867,
-     "exitRed": 3.2325
+     "holdAll": 3.2954,
+     "exitRed": 3.2409
     }
    },
    "split": "train"
   },
   {
    "date": "2021-02-15",
-   "rli": 0.9285,
+   "rli": 0.9283,
    "counts": {
     "CR": 2,
     "EN": 14,
     "VU": 24,
     "NT": 31,
-    "LC": 290,
+    "LC": 289,
     "DD": 114,
-    "NE": 25
+    "NE": 26
    },
    "riskiest": [
     {
@@ -1614,28 +1614,28 @@
       "vanished": 4
      },
      "LC": {
-      "n": 290,
+      "n": 289,
       "vanished": 8
      }
     },
     "portfolio": {
-     "holdAll": 0.4242,
-     "exitRed": 0.4395
+     "holdAll": 0.4253,
+     "exitRed": 0.4407
     }
    },
    "split": "train"
   },
   {
    "date": "2021-05-15",
-   "rli": 0.9078,
+   "rli": 0.9076,
    "counts": {
     "CR": 6,
     "EN": 22,
     "VU": 27,
     "NT": 45,
-    "LC": 310,
+    "LC": 309,
     "DD": 71,
-    "NE": 19
+    "NE": 20
    },
    "riskiest": [
     {
@@ -1737,7 +1737,7 @@
      "symbol": "GRN",
      "rank": 440,
      "status": "EN",
-     "probability": 0.384,
+     "probability": 0.383,
      "reasons": [
       "Lost 25% of its exchange pairs in 6 months",
       "Trades less than 0.01% of its value per day"
@@ -1792,28 +1792,28 @@
       "vanished": 3
      },
      "LC": {
-      "n": 310,
+      "n": 309,
       "vanished": 5
      }
     },
     "portfolio": {
-     "holdAll": -0.6297,
-     "exitRed": -0.5795
+     "holdAll": -0.6312,
+     "exitRed": -0.5808
     }
    },
    "split": "train"
   },
   {
    "date": "2021-08-15",
-   "rli": 0.9372,
+   "rli": 0.937,
    "counts": {
     "CR": 3,
     "EN": 11,
     "VU": 25,
     "NT": 35,
-    "LC": 340,
+    "LC": 339,
     "DD": 63,
-    "NE": 23
+    "NE": 24
    },
    "riskiest": [
     {
@@ -1847,7 +1847,7 @@
      "symbol": "BLCT",
      "rank": 400,
      "status": "CR",
-     "probability": 0.415,
+     "probability": 0.414,
      "reasons": [
       "Fell 63% behind the overall market in 12 months",
       "Lost 50% of its exchange pairs in 6 months",
@@ -1966,28 +1966,28 @@
       "vanished": 1
      },
      "LC": {
-      "n": 340,
+      "n": 339,
       "vanished": 3
      }
     },
     "portfolio": {
-     "holdAll": -0.5817,
-     "exitRed": -0.5659
+     "holdAll": -0.5831,
+     "exitRed": -0.5672
     }
    },
    "split": "train"
   },
   {
    "date": "2021-11-15",
-   "rli": 0.9378,
+   "rli": 0.9376,
    "counts": {
     "CR": 4,
     "EN": 15,
     "VU": 16,
     "NT": 37,
-    "LC": 346,
+    "LC": 345,
     "DD": 62,
-    "NE": 20
+    "NE": 21
    },
    "riskiest": [
     {
@@ -2021,7 +2021,7 @@
      "symbol": "XNC",
      "rank": 474,
      "status": "CR",
-     "probability": 0.555,
+     "probability": 0.554,
      "reasons": [
       "Fell 71% behind the overall market in 12 months",
       "Lost 71% of its exchange pairs in 6 months",
@@ -2063,7 +2063,7 @@
      "symbol": "YOUC",
      "rank": 204,
      "status": "EN",
-     "probability": 0.386,
+     "probability": 0.387,
      "reasons": [
       "Lost 43% of its exchange pairs in 6 months",
       "Trades only 0.02% of its value per day"
@@ -2076,7 +2076,7 @@
      "symbol": "BLCT",
      "rank": 357,
      "status": "EN",
-     "probability": 0.362,
+     "probability": 0.361,
      "reasons": [
       "Lost 54% of its exchange pairs in 6 months",
       "Trades only 0.05% of its value per day"
@@ -2145,28 +2145,28 @@
       "vanished": 2
      },
      "LC": {
-      "n": 346,
+      "n": 345,
       "vanished": 3
      }
     },
     "portfolio": {
-     "holdAll": -0.8298,
-     "exitRed": -0.7961
+     "holdAll": -0.8316,
+     "exitRed": -0.7979
     }
    },
    "split": "train"
   },
   {
    "date": "2022-02-15",
-   "rli": 0.9447,
+   "rli": 0.9445,
    "counts": {
     "CR": 1,
     "EN": 13,
     "VU": 24,
     "NT": 26,
-    "LC": 359,
-    "DD": 56,
-    "NE": 21
+    "LC": 358,
+    "DD": 55,
+    "NE": 23
    },
    "riskiest": [
     {
@@ -2188,7 +2188,7 @@
      "symbol": "GRID",
      "rank": 492,
      "status": "EN",
-     "probability": 0.39,
+     "probability": 0.389,
      "reasons": [
       "Lost 25% of its exchange pairs in 6 months",
       "Trades less than 0.01% of its value per day"
@@ -2201,7 +2201,7 @@
      "symbol": "HYN",
      "rank": 482,
      "status": "EN",
-     "probability": 0.315,
+     "probability": 0.314,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -2285,7 +2285,7 @@
      "symbol": "HEDG",
      "rank": 259,
      "status": "EN",
-     "probability": 0.233,
+     "probability": 0.234,
      "reasons": [
       "Fell 79% behind the overall market in 12 months",
       "Trades only 0.03% of its value per day"
@@ -2313,28 +2313,28 @@
       "vanished": 1
      },
      "LC": {
-      "n": 359,
+      "n": 358,
       "vanished": 8
      }
     },
     "portfolio": {
-     "holdAll": -0.6393,
-     "exitRed": -0.6101
+     "holdAll": -0.6408,
+     "exitRed": -0.6115
     }
    },
    "split": "gap"
   },
   {
    "date": "2022-05-15",
-   "rli": 0.9461,
+   "rli": 0.946,
    "counts": {
     "CR": 0,
     "EN": 10,
     "VU": 31,
     "NT": 26,
-    "LC": 371,
-    "DD": 39,
-    "NE": 23
+    "LC": 370,
+    "DD": 38,
+    "NE": 25
    },
    "riskiest": [
     {
@@ -2404,7 +2404,7 @@
      "symbol": "BEST",
      "rank": 224,
      "status": "EN",
-     "probability": 0.288,
+     "probability": 0.287,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -2479,28 +2479,28 @@
       "vanished": 0
      },
      "LC": {
-      "n": 371,
+      "n": 370,
       "vanished": 11
      }
     },
     "portfolio": {
-     "holdAll": -0.4243,
-     "exitRed": -0.4077
+     "holdAll": -0.4255,
+     "exitRed": -0.4089
     }
    },
    "split": "gap"
   },
   {
    "date": "2022-08-15",
-   "rli": 0.9448,
+   "rli": 0.9459,
    "counts": {
     "CR": 0,
-    "EN": 17,
+    "EN": 16,
     "VU": 25,
     "NT": 24,
-    "LC": 387,
+    "LC": 386,
     "DD": 22,
-    "NE": 25
+    "NE": 27
    },
    "riskiest": [
     {
@@ -2508,7 +2508,7 @@
      "symbol": "HEDG",
      "rank": 331,
      "status": "EN",
-     "probability": 0.343,
+     "probability": 0.342,
      "reasons": [
       "Fell 61% behind the overall market in 12 months",
       "Trades less than 0.01% of its value per day"
@@ -2533,7 +2533,7 @@
      "symbol": "STAKE",
      "rank": 424,
      "status": "EN",
-     "probability": 0.309,
+     "probability": 0.308,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -2569,7 +2569,7 @@
      "symbol": "RKN",
      "rank": 292,
      "status": "EN",
-     "probability": 0.295,
+     "probability": 0.294,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -2617,7 +2617,7 @@
      "symbol": "BTTOLD",
      "rank": 204,
      "status": "EN",
-     "probability": 0.286,
+     "probability": 0.285,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -2632,7 +2632,7 @@
       "vanished": 0
      },
      "EN": {
-      "n": 17,
+      "n": 16,
       "vanished": 8
      },
      "VU": {
@@ -2644,28 +2644,28 @@
       "vanished": 1
      },
      "LC": {
-      "n": 387,
+      "n": 386,
       "vanished": 9
      }
     },
     "portfolio": {
-     "holdAll": -0.4435,
-     "exitRed": -0.4169
+     "holdAll": -0.4457,
+     "exitRed": -0.4189
     }
    },
    "split": "gap"
   },
   {
    "date": "2022-11-15",
-   "rli": 0.9491,
+   "rli": 0.9502,
    "counts": {
     "CR": 3,
-    "EN": 14,
+    "EN": 13,
     "VU": 20,
     "NT": 21,
-    "LC": 394,
+    "LC": 393,
     "DD": 21,
-    "NE": 27
+    "NE": 29
    },
    "riskiest": [
     {
@@ -2673,7 +2673,7 @@
      "symbol": "DFG",
      "rank": 479,
      "status": "CR",
-     "probability": 0.433,
+     "probability": 0.432,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -2685,7 +2685,7 @@
      "symbol": "1ECO",
      "rank": 374,
      "status": "CR",
-     "probability": 0.42,
+     "probability": 0.419,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -2709,7 +2709,7 @@
      "symbol": "HOO",
      "rank": 462,
      "status": "EN",
-     "probability": 0.313,
+     "probability": 0.312,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -2769,7 +2769,7 @@
      "symbol": "GTN",
      "rank": 330,
      "status": "EN",
-     "probability": 0.299,
+     "probability": 0.298,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -2796,7 +2796,7 @@
       "vanished": 2
      },
      "EN": {
-      "n": 14,
+      "n": 13,
       "vanished": 8
      },
      "VU": {
@@ -2808,28 +2808,28 @@
       "vanished": 1
      },
      "LC": {
-      "n": 394,
+      "n": 393,
       "vanished": 5
      }
     },
     "portfolio": {
-     "holdAll": 0.2046,
-     "exitRed": 0.2276
+     "holdAll": 0.2051,
+     "exitRed": 0.2284
     }
    },
    "split": "test"
   },
   {
    "date": "2023-02-15",
-   "rli": 0.9611,
+   "rli": 0.9613,
    "counts": {
     "CR": 1,
     "EN": 6,
     "VU": 22,
-    "NT": 21,
-    "LC": 397,
+    "NT": 20,
+    "LC": 396,
     "DD": 31,
-    "NE": 22
+    "NE": 24
    },
    "riskiest": [
     {
@@ -2849,7 +2849,7 @@
      "symbol": "CBG",
      "rank": 410,
      "status": "EN",
-     "probability": 0.329,
+     "probability": 0.33,
      "reasons": [
       "Fell 92% behind the overall market in 12 months",
       "Trades only 0.06% of its value per day"
@@ -2947,7 +2947,7 @@
      "symbol": "VRSC",
      "rank": 458,
      "status": "VU",
-     "probability": 0.184,
+     "probability": 0.183,
      "reasons": [
       "Trades only 0.15% of its value per day"
      ],
@@ -2970,32 +2970,32 @@
       "vanished": 3
      },
      "NT": {
-      "n": 21,
+      "n": 20,
       "vanished": 0
      },
      "LC": {
-      "n": 397,
+      "n": 396,
       "vanished": 4
      }
     },
     "portfolio": {
-     "holdAll": 0.1275,
-     "exitRed": 0.1351
+     "holdAll": 0.1277,
+     "exitRed": 0.1353
     }
    },
    "split": "test"
   },
   {
    "date": "2023-05-15",
-   "rli": 0.9454,
+   "rli": 0.9452,
    "counts": {
     "CR": 1,
     "EN": 10,
     "VU": 28,
     "NT": 32,
-    "LC": 376,
+    "LC": 374,
     "DD": 28,
-    "NE": 25
+    "NE": 27
    },
    "riskiest": [
     {
@@ -3040,7 +3040,7 @@
      "symbol": "ONUS",
      "rank": 414,
      "status": "EN",
-     "probability": 0.308,
+     "probability": 0.307,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -3088,7 +3088,7 @@
      "symbol": "COL",
      "rank": 321,
      "status": "EN",
-     "probability": 0.258,
+     "probability": 0.259,
      "reasons": [
       "Trades only 0.11% of its value per day"
      ],
@@ -3139,28 +3139,28 @@
       "vanished": 0
      },
      "LC": {
-      "n": 376,
+      "n": 374,
       "vanished": 8
      }
     },
     "portfolio": {
-     "holdAll": 0.4976,
-     "exitRed": 0.5127
+     "holdAll": 0.499,
+     "exitRed": 0.5142
     }
    },
    "split": "test"
   },
   {
    "date": "2023-08-15",
-   "rli": 0.9497,
+   "rli": 0.9499,
    "counts": {
     "CR": 1,
     "EN": 8,
     "VU": 27,
-    "NT": 30,
-    "LC": 379,
+    "NT": 29,
+    "LC": 378,
     "DD": 30,
-    "NE": 25
+    "NE": 27
    },
    "riskiest": [
     {
@@ -3254,7 +3254,7 @@
      "symbol": "HEX",
      "rank": 199,
      "status": "EN",
-     "probability": 0.265,
+     "probability": 0.266,
      "reasons": [
       "Fell 90% behind the overall market in 12 months",
       "Trades only 0.10% of its value per day"
@@ -3302,32 +3302,32 @@
       "vanished": 3
      },
      "NT": {
-      "n": 30,
+      "n": 29,
       "vanished": 2
      },
      "LC": {
-      "n": 379,
+      "n": 378,
       "vanished": 7
      }
     },
     "portfolio": {
-     "holdAll": 0.07,
-     "exitRed": 0.0863
+     "holdAll": 0.069,
+     "exitRed": 0.0853
     }
    },
    "split": "test"
   },
   {
    "date": "2023-11-15",
-   "rli": 0.9597,
+   "rli": 0.9596,
    "counts": {
     "CR": 0,
     "EN": 7,
     "VU": 24,
     "NT": 21,
-    "LC": 395,
+    "LC": 393,
     "DD": 29,
-    "NE": 24
+    "NE": 26
    },
    "riskiest": [
     {
@@ -3473,28 +3473,28 @@
       "vanished": 0
      },
      "LC": {
-      "n": 395,
+      "n": 393,
       "vanished": 11
      }
     },
     "portfolio": {
-     "holdAll": 0.0886,
-     "exitRed": 0.0952
+     "holdAll": 0.0876,
+     "exitRed": 0.0942
     }
    },
    "split": "test"
   },
   {
    "date": "2024-02-15",
-   "rli": 0.9653,
+   "rli": 0.9651,
    "counts": {
     "CR": 0,
     "EN": 5,
     "VU": 19,
     "NT": 23,
-    "LC": 391,
+    "LC": 389,
     "DD": 45,
-    "NE": 17
+    "NE": 19
    },
    "riskiest": [
     {
@@ -3551,7 +3551,7 @@
      "symbol": "HEX",
      "rank": 199,
      "status": "EN",
-     "probability": 0.265,
+     "probability": 0.266,
      "reasons": [
       "Fell 85% behind the overall market in 12 months",
       "Trades only 0.05% of its value per day"
@@ -3639,28 +3639,28 @@
       "vanished": 0
      },
      "LC": {
-      "n": 391,
+      "n": 389,
       "vanished": 14
      }
     },
     "portfolio": {
-     "holdAll": -0.1872,
-     "exitRed": -0.1853
+     "holdAll": -0.1901,
+     "exitRed": -0.1882
     }
    },
    "split": "test"
   },
   {
    "date": "2024-05-15",
-   "rli": 0.966,
+   "rli": 0.9659,
    "counts": {
     "CR": 0,
     "EN": 3,
     "VU": 20,
     "NT": 23,
-    "LC": 378,
+    "LC": 376,
     "DD": 58,
-    "NE": 18
+    "NE": 20
    },
    "riskiest": [
     {
@@ -3694,7 +3694,7 @@
      "symbol": "ORBR",
      "rank": 204,
      "status": "EN",
-     "probability": 0.247,
+     "probability": 0.248,
      "reasons": [
       "Trades only 0.03% of its value per day"
      ],
@@ -3805,28 +3805,28 @@
       "vanished": 1
      },
      "LC": {
-      "n": 378,
+      "n": 376,
       "vanished": 11
      }
     },
     "portfolio": {
-     "holdAll": -0.4086,
-     "exitRed": -0.4023
+     "holdAll": -0.4122,
+     "exitRed": -0.4059
     }
    },
    "split": "test"
   },
   {
    "date": "2024-08-15",
-   "rli": 0.9582,
+   "rli": 0.958,
    "counts": {
     "CR": 1,
     "EN": 5,
     "VU": 18,
     "NT": 34,
-    "LC": 368,
+    "LC": 366,
     "DD": 52,
-    "NE": 22
+    "NE": 24
    },
    "riskiest": [
     {
@@ -3846,7 +3846,7 @@
      "symbol": "MCT",
      "rank": 489,
      "status": "EN",
-     "probability": 0.316,
+     "probability": 0.315,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -3970,28 +3970,28 @@
       "vanished": 4
      },
      "LC": {
-      "n": 368,
+      "n": 366,
       "vanished": 13
      }
     },
     "portfolio": {
-     "holdAll": -0.1238,
-     "exitRed": -0.1116
+     "holdAll": -0.1261,
+     "exitRed": -0.1138
     }
    },
    "split": "test"
   },
   {
    "date": "2024-11-15",
-   "rli": 0.9675,
+   "rli": 0.9674,
    "counts": {
     "CR": 2,
     "EN": 2,
     "VU": 19,
     "NT": 16,
-    "LC": 380,
+    "LC": 378,
     "DD": 64,
-    "NE": 17
+    "NE": 19
    },
    "riskiest": [
     {
@@ -4048,7 +4048,7 @@
      "symbol": "BZR",
      "rank": 499,
      "status": "VU",
-     "probability": 0.187,
+     "probability": 0.186,
      "reasons": [
       "Trades only 0.17% of its value per day"
      ],
@@ -4135,28 +4135,28 @@
       "vanished": 2
      },
      "LC": {
-      "n": 380,
+      "n": 378,
       "vanished": 8
      }
     },
     "portfolio": {
-     "holdAll": -0.5148,
-     "exitRed": -0.5085
+     "holdAll": -0.5201,
+     "exitRed": -0.5138
     }
    },
    "split": "test"
   },
   {
    "date": "2025-02-15",
-   "rli": 0.9548,
+   "rli": 0.9564,
    "counts": {
     "CR": 1,
-    "EN": 8,
+    "EN": 7,
     "VU": 21,
-    "NT": 22,
-    "LC": 355,
-    "DD": 74,
-    "NE": 19
+    "NT": 21,
+    "LC": 354,
+    "DD": 73,
+    "NE": 23
    },
    "riskiest": [
     {
@@ -4176,7 +4176,7 @@
      "symbol": "ANT",
      "rank": 375,
      "status": "EN",
-     "probability": 0.348,
+     "probability": 0.347,
      "reasons": [
       "Fell 59% behind the overall market in 12 months",
       "Trades less than 0.01% of its value per day"
@@ -4214,18 +4214,6 @@
      "rank": 343,
      "status": "EN",
      "probability": 0.261,
-     "reasons": [
-      "Trades only 0.11% of its value per day"
-     ],
-     "vanished": true,
-     "ret": null
-    },
-    {
-     "id": 28380,
-     "symbol": "GPRO",
-     "rank": 255,
-     "status": "EN",
-     "probability": 0.252,
      "reasons": [
       "Trades only 0.11% of its value per day"
      ],
@@ -4281,6 +4269,18 @@
      ],
      "vanished": true,
      "ret": null
+    },
+    {
+     "id": 8677,
+     "symbol": "XYM",
+     "rank": 421,
+     "status": "VU",
+     "probability": 0.181,
+     "reasons": [
+      "Trades only 0.19% of its value per day"
+     ],
+     "vanished": false,
+     "ret": -0.814
     }
    ],
    "outcome": {
@@ -4290,40 +4290,40 @@
       "vanished": 1
      },
      "EN": {
-      "n": 8,
-      "vanished": 4
+      "n": 7,
+      "vanished": 3
      },
      "VU": {
       "n": 21,
       "vanished": 9
      },
      "NT": {
-      "n": 22,
+      "n": 21,
       "vanished": 2
      },
      "LC": {
-      "n": 355,
+      "n": 354,
       "vanished": 5
      }
     },
     "portfolio": {
-     "holdAll": -0.6698,
-     "exitRed": -0.6516
+     "holdAll": -0.676,
+     "exitRed": -0.66
     }
    },
    "split": "test"
   },
   {
    "date": "2025-05-15",
-   "rli": 0.9757,
+   "rli": 0.9756,
    "counts": {
     "CR": 0,
     "EN": 4,
     "VU": 9,
     "NT": 19,
-    "LC": 372,
+    "LC": 370,
     "DD": 69,
-    "NE": 27
+    "NE": 29
    },
    "riskiest": [
     {
@@ -4331,7 +4331,7 @@
      "symbol": "H2O",
      "rank": 444,
      "status": "EN",
-     "probability": 0.311,
+     "probability": 0.31,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ],
@@ -4468,28 +4468,28 @@
       "vanished": 1
      },
      "LC": {
-      "n": 372,
+      "n": 370,
       "vanished": 7
      }
     },
     "portfolio": {
-     "holdAll": -0.6134,
-     "exitRed": -0.6047
+     "holdAll": -0.6184,
+     "exitRed": -0.6097
     }
    },
    "split": "test"
   },
   {
    "date": "2025-08-15",
-   "rli": 0.9789,
+   "rli": 0.9788,
    "counts": {
     "CR": 0,
     "EN": 4,
     "VU": 8,
     "NT": 15,
-    "LC": 381,
+    "LC": 379,
     "DD": 64,
-    "NE": 28
+    "NE": 30
    },
    "riskiest": [
     {
@@ -4509,7 +4509,7 @@
      "symbol": "WHITE",
      "rank": 216,
      "status": "EN",
-     "probability": 0.248,
+     "probability": 0.249,
      "reasons": [
       "Trades only 0.11% of its value per day"
      ],
@@ -4560,7 +4560,7 @@
      "symbol": "KEEP",
      "rank": 445,
      "status": "VU",
-     "probability": 0.183,
+     "probability": 0.182,
      "reasons": [
       "Trades only 0.03% of its value per day"
      ],
@@ -4635,28 +4635,28 @@
       "vanished": 0
      },
      "LC": {
-      "n": 381,
+      "n": 379,
       "vanished": 8
      }
     },
     "portfolio": {
-     "holdAll": -0.6937,
-     "exitRed": -0.6847
+     "holdAll": -0.6986,
+     "exitRed": -0.6896
     }
    },
    "split": "test"
   },
   {
    "date": "2025-11-15",
-   "rli": 0.9692,
+   "rli": 0.969,
    "counts": {
     "CR": 0,
     "EN": 4,
     "VU": 15,
     "NT": 18,
-    "LC": 352,
-    "DD": 77,
-    "NE": 34
+    "LC": 350,
+    "DD": 75,
+    "NE": 38
    },
    "riskiest": [
     {
@@ -4714,7 +4714,7 @@
      "symbol": "SN",
      "rank": 445,
      "status": "VU",
-     "probability": 0.183,
+     "probability": 0.182,
      "reasons": [
       "Trades only 0.13% of its value per day"
      ],
@@ -4750,7 +4750,7 @@
      "symbol": "TORN",
      "rank": 350,
      "status": "VU",
-     "probability": 0.176,
+     "probability": 0.175,
      "reasons": [
       "Trades only 0.10% of its value per day"
      ],
@@ -4801,28 +4801,28 @@
       "vanished": 2
      },
      "LC": {
-      "n": 352,
+      "n": 350,
       "vanished": 7
      }
     },
     "portfolio": {
-     "holdAll": -0.5358,
-     "exitRed": -0.5266
+     "holdAll": -0.5383,
+     "exitRed": -0.5291
     }
    },
    "split": "test"
   },
   {
    "date": "2026-02-15",
-   "rli": 0.9611,
+   "rli": 0.9618,
    "counts": {
     "CR": 0,
-    "EN": 7,
+    "EN": 6,
     "VU": 16,
     "NT": 23,
-    "LC": 345,
-    "DD": 70,
-    "NE": 39
+    "LC": 337,
+    "DD": 67,
+    "NE": 51
    },
    "riskiest": [
     {
@@ -4856,21 +4856,11 @@
      ]
     },
     {
-     "id": 34212,
-     "symbol": "XAUM",
-     "rank": 326,
-     "status": "EN",
-     "probability": 0.259,
-     "reasons": [
-      "Trades only 0.19% of its value per day"
-     ]
-    },
-    {
      "id": 36511,
      "symbol": "SLT",
      "rank": 236,
      "status": "EN",
-     "probability": 0.25,
+     "probability": 0.251,
      "reasons": [
       "Trades only 0.12% of its value per day"
      ]
@@ -4912,7 +4902,7 @@
      "symbol": "LON",
      "rank": 498,
      "status": "VU",
-     "probability": 0.187,
+     "probability": 0.186,
      "reasons": [
       "Trades only 0.05% of its value per day"
      ]
@@ -4926,6 +4916,16 @@
      "reasons": [
       "Trades only 0.01% of its value per day"
      ]
+    },
+    {
+     "id": 17520,
+     "symbol": "ORBR",
+     "rank": 459,
+     "status": "VU",
+     "probability": 0.183,
+     "reasons": [
+      "Trades only 0.03% of its value per day"
+     ]
     }
    ],
    "outcome": null,
@@ -4933,15 +4933,15 @@
   },
   {
    "date": "2026-05-15",
-   "rli": 0.9736,
+   "rli": 0.9739,
    "counts": {
     "CR": 0,
-    "EN": 2,
+    "EN": 1,
     "VU": 13,
     "NT": 21,
-    "LC": 365,
-    "DD": 59,
-    "NE": 40
+    "LC": 348,
+    "DD": 53,
+    "NE": 64
    },
    "riskiest": [
     {
@@ -4955,21 +4955,11 @@
      ]
     },
     {
-     "id": 37050,
-     "symbol": "MRVLX",
-     "rank": 382,
-     "status": "EN",
-     "probability": 0.264,
-     "reasons": [
-      "Trades only 0.01% of its value per day"
-     ]
-    },
-    {
      "id": 35637,
      "symbol": "BDCA",
      "rank": 377,
      "status": "VU",
-     "probability": 0.178,
+     "probability": 0.177,
      "reasons": [
       "Trades only 0.18% of its value per day"
      ]
@@ -5043,6 +5033,16 @@
      "reasons": [
       "Trades only 0.23% of its value per day"
      ]
+    },
+    {
+     "id": 36302,
+     "symbol": "NILA",
+     "rank": 337,
+     "status": "VU",
+     "probability": 0.148,
+     "reasons": [
+      "Trades only 0.49% of its value per day"
+     ]
     }
    ],
    "outcome": null,
@@ -5050,15 +5050,15 @@
   },
   {
    "date": "2026-08-15",
-   "rli": 0.9587,
+   "rli": 0.9574,
    "counts": {
     "CR": 1,
     "EN": 7,
     "VU": 18,
-    "NT": 23,
-    "LC": 358,
-    "DD": 48,
-    "NE": 45
+    "NT": 22,
+    "LC": 342,
+    "DD": 40,
+    "NE": 70
    },
    "riskiest": [
     {
@@ -5076,7 +5076,7 @@
      "symbol": "MNGO",
      "rank": 491,
      "status": "EN",
-     "probability": 0.316,
+     "probability": 0.315,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ]
@@ -5168,15 +5168,15 @@
   },
   {
    "date": "2026-11-15",
-   "rli": 0.967,
+   "rli": 0.9669,
    "counts": {
     "CR": 1,
     "EN": 7,
-    "VU": 12,
-    "NT": 19,
-    "LC": 373,
-    "DD": 44,
-    "NE": 44
+    "VU": 11,
+    "NT": 18,
+    "LC": 356,
+    "DD": 28,
+    "NE": 79
    },
    "riskiest": [
     {
@@ -5194,7 +5194,7 @@
      "symbol": "MNGO",
      "rank": 434,
      "status": "EN",
-     "probability": 0.31,
+     "probability": 0.309,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ]
@@ -5204,7 +5204,7 @@
      "symbol": "YZY",
      "rank": 263,
      "status": "EN",
-     "probability": 0.292,
+     "probability": 0.291,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ]
@@ -5214,7 +5214,7 @@
      "symbol": "KOGE",
      "rank": 224,
      "status": "EN",
-     "probability": 0.288,
+     "probability": 0.287,
      "reasons": [
       "Trades less than 0.01% of its value per day"
      ]
