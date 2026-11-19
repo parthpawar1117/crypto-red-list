@@ -8,7 +8,9 @@ const plexSans = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600
 const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-plex-mono", display: "swap" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://crypto-red-list.vercel.app"),
   title: { default: "Crypto Red List", template: "%s · Crypto Red List" },
+  alternates: { types: { "application/rss+xml": [{ url: "/feed.xml", title: "Crypto Red List: extinction alerts" }] } },
   description:
     "An IUCN-style extinction-risk list for the top 500 cryptocurrencies: each coin's measured chance of vanishing within 12 months, built on CoinMarketCap data and tested on years the model never saw.",
 };
@@ -47,6 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Link href="/time-machine">Time machine</Link>
               <Link href="/method">How it works</Link>
               <a href="/api/redlist">API</a>
+              <a href="/feed.xml">Alerts (RSS)</a>
             </nav>
           </div>
         </header>
@@ -54,8 +57,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <footer className="site-foot">
           <div className="wrap">
             <span>
-              Data: CoinMarketCap API (<code className="mono">listings/latest</code>, <code className="mono">listings/historical</code>,{" "}
-              <code className="mono">cryptocurrency/info</code>, <code className="mono">fear-and-greed/historical</code>).
+              Data: ten CoinMarketCap API endpoints, listed with their purpose on <Link href="/method">How it works</Link>. Refreshed every 6 hours.
             </span>
             <span>An early-warning tool for coins that may disappear, not a price prediction and not financial advice.</span>
           </div>
