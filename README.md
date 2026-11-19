@@ -5,6 +5,7 @@
 <br>
 
 <a href="https://crypto-red-list.vercel.app"><img src="https://img.shields.io/badge/%E2%96%B6%20Live%20demo-crypto--red--list.vercel.app-d81e05?style=for-the-badge&logo=vercel&logoColor=white" alt="Live demo"></a>
+<a href="https://youtu.be/YuUll8M95Yk"><img src="https://img.shields.io/badge/Demo%20video-1%3A57-ff0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Demo video (1:57)"></a>
 
 <img src="https://img.shields.io/badge/Track-Data%20%26%20Visualisation-1d1a16?style=flat-square" alt="Track: Data & Visualisation">
 <img src="https://img.shields.io/badge/%23BuildwithCMC-DoraHacks-17345a?style=flat-square" alt="#BuildwithCMC">
@@ -15,6 +16,7 @@
 <img src="https://img.shields.io/badge/license-MIT-8b949e?style=flat-square" alt="MIT">
 
 <h3>
+  <a href="https://youtu.be/YuUll8M95Yk">Watch the demo</a> ·
   <a href="https://crypto-red-list.vercel.app">The list</a> ·
   <a href="https://crypto-red-list.vercel.app/time-machine">Time machine</a> ·
   <a href="https://crypto-red-list.vercel.app/method">How it works</a> ·
