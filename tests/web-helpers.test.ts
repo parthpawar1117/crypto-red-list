@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { STATUS, criteriaCode, parsePortfolio, matchPortfolio, formatPct } from "@/web/status";
+import { STATUS, criteriaCode, parsePortfolio, matchPortfolio, formatPct, statusChange } from "@/web/status";
 
 describe("STATUS metadata", () => {
   it("uses IUCN category colours and plain-language names", () => {
@@ -52,5 +52,18 @@ describe("formatPct", () => {
     expect(formatPct(0.2834)).toBe("28%");
     expect(formatPct(0.004)).toBe("<1%");
     expect(formatPct(null)).toBe("–");
+  });
+});
+
+describe("statusChange (IUCN: uplisted = moved to a higher-risk category)", () => {
+  it("compares assessed categories", () => {
+    expect(statusChange("LC", "EN")).toBe("uplisted");
+    expect(statusChange("CR", "VU")).toBe("downlisted");
+    expect(statusChange("NT", "NT")).toBe("same");
+  });
+  it("cannot compare when either side was not assessed", () => {
+    expect(statusChange(undefined, "EN")).toBe("new");
+    expect(statusChange("DD", "EN")).toBe("new");
+    expect(statusChange("EN", "NE")).toBe("same");
   });
 });

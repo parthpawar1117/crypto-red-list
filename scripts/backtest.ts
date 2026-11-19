@@ -17,11 +17,15 @@ const TEST_FIRST = SHIPPED_MODEL.test.from;
 const split = (d: string) => (d <= TRAIN_LAST ? "train" : d < TEST_FIRST ? "gap" : "test");
 
 const cohorts: (CohortSummary & { split: string })[] = [];
+let previousQuarter: { date: string; statuses: Record<number, string> } | null = null;
+const PREVIOUS_QUARTER = "2026-08-15";
 for (const date of censusDates("2019-11-15")) {
   const now = loadCensus(date), halfAgo = loadCensus(shiftMonths(date, -6)), yearAgo = loadCensus(shiftMonths(date, -12));
   if (!now || !halfAgo || !yearAgo) throw new Error(`census missing around ${date}; run npm run census`);
   const later = loadCensus(shiftMonths(date, 12));
-  const summary = summarizeCohort(rateCohort({ date, now, halfAgo, yearAgo, later, weights: SHIPPED_WEIGHTS }), 10);
+  const rated = rateCohort({ date, now, halfAgo, yearAgo, later, weights: SHIPPED_WEIGHTS });
+  if (date === PREVIOUS_QUARTER) previousQuarter = { date, statuses: Object.fromEntries(rated.coins.map((c) => [c.id, c.status])) };
+  const summary = summarizeCohort(rated, 10);
   cohorts.push({ ...summary, split: later ? split(date) : "no outcome yet" });
 }
 
@@ -47,6 +51,7 @@ const results = {
   model: { version: SHIPPED_MODEL.version, train: { from: SHIPPED_MODEL.train.from, to: TRAIN_LAST }, test: SHIPPED_MODEL.test },
   assumptions: { vanishedReturn: VANISHED_RETURN, returnCap: RETURN_CAP, outcome: SHIPPED_MODEL.outcome },
   portfolio: { all: portfolio(withOutcome), test: portfolio(testCohorts) },
+  previousQuarter,
   cohorts: cohorts.map((c) => ({
     ...c,
     rli: c.rli == null ? null : round(c.rli),

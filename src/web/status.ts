@@ -87,3 +87,18 @@ export function matchPortfolio<T extends PortfolioCoin>(symbols: string[], coins
   }
   return { found, missing, threatened: found.filter((c) => THREATENED.includes(c.status)).length };
 }
+
+const SEVERITY: Partial<Record<RedListStatus, number>> = { LC: 0, NT: 1, VU: 2, EN: 3, CR: 4 };
+
+/**
+ * IUCN wording: "uplisted" = moved to a higher-risk category, "downlisted" =
+ * lower. "new" = not assessed last quarter (or not listed), so no comparison.
+ * A coin that is not assessed now (DD / NE) has nothing to report: "same".
+ */
+export function statusChange(prev: RedListStatus | undefined, now: RedListStatus): "uplisted" | "downlisted" | "same" | "new" {
+  const n = SEVERITY[now];
+  if (n === undefined) return "same";
+  const p = prev === undefined ? undefined : SEVERITY[prev];
+  if (p === undefined) return "new";
+  return n > p ? "uplisted" : n < p ? "downlisted" : "same";
+}

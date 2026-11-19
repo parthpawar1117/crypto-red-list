@@ -26,6 +26,13 @@ describe("published backtest results", () => {
     expect(results.portfolio.test.exitBetterIn).toBeGreaterThanOrEqual(10);
   });
 
+  it("keep last quarter's statuses (id -> status only) for the 'changed since' feed", () => {
+    expect(results.previousQuarter.date).toBe("2026-08-15");
+    const statuses = Object.values(results.previousQuarter.statuses);
+    expect(statuses.length).toBeGreaterThan(450);
+    for (const s of statuses) expect(["CR", "EN", "VU", "NT", "LC", "DD", "NE"]).toContain(s);
+  });
+
   it("contain derived results only, never raw CMC market data", () => {
     const text = JSON.stringify(results);
     for (const raw of ["market_cap", "volume_24h", "num_market_pairs", "\"mcap\"", "\"vol\"", "\"pairs\""]) expect(text).not.toContain(raw);
