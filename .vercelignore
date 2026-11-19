@@ -1,0 +1,13 @@
+# Never upload secrets: the key is set as a Vercel environment variable instead.
+.env
+.env.*
+!.env.example
+
+# CoinMarketCap census snapshots stay local (not redistributed); the site only needs derived results.
+data/
+
+node_modules
+.next
+coverage
+*.log
+*.tsbuildinfo
