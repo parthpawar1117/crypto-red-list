@@ -24,6 +24,12 @@
   <a href="https://crypto-red-list.vercel.app/feed.xml">Alerts (RSS)</a>
 </h3>
 
+<br>
+
+<a href="https://youtu.be/YuUll8M95Yk"><img src="docs/demo.gif" alt="15-second tour: the live list, a Critically Endangered coin's assessment sheet, and the time machine replaying November 2022" width="760"></a>
+
+<sub>15-second tour of the live site · <a href="https://youtu.be/YuUll8M95Yk">full 1:57 demo with narration</a></sub>
+
 </div>
 
 ---
@@ -49,6 +55,11 @@ And the whole market gets one number: the **Crypto Red List Index** (1.000 = eve
 
 The model was trained on quarterly cohorts **Nov 2019 – Nov 2021** and tested on **Nov 2022 – Nov 2025** (5,526 coin-quarters it never saw). CMC's historical census includes coins that later died, so there is **no survivorship bias**. The tested weights are the shipped weights.
 
+<img src="docs/calibration.svg" alt="Calibration on the test years: predicted vs actually vanished per category. LC 2.7% vs 2.2%, NT 7.6% vs 5.1%, VU 16.0% vs 23.6%, EN 27.8% vs 47.4%, CR 41.8% vs 70.0%. AUC 0.748 vs 0.581 for rank alone; riskiest tenth 5.1x the base rate." width="100%">
+
+<details>
+<summary>The same numbers as a table</summary>
+
 | Category (test years) | Coins | Predicted | **Actually vanished** |
 |---|---:|---:|---:|
 | 🟢 Least Concern | 4,896 | 2.7% | **2.2%** |
@@ -57,10 +68,35 @@ The model was trained on quarterly cohorts **Nov 2019 – Nov 2021** and tested 
 | 🟠 Endangered | 78 | 27.8% | **47.4%** |
 | 🔴 Critically Endangered | 10 | 41.8% | **70.0%** |
 
+</details>
+
 - **AUC 0.748** out of sample, against **0.581** for market rank alone.
 - The riskiest tenth vanished **21.0%** of the time against a 4.1% base rate: **5.1×**.
 - **15 Nov 2022:** the list named 10 coins most at risk. **8 of them vanished within a year.** ([see it in the time machine](https://crypto-red-list.vercel.app/time-machine))
 - Selling red-listed coins beat holding everything in **21 of 25 quarters** (13 of 13 test quarters). The edge is small (~1 point a year): it is a filter for what to avoid, **not** a strategy that beats CMC's CMC100 index, and the site says so.
+
+<img src="docs/rli.svg" alt="The Crypto Red List Index from Nov 2019 to Nov 2026, with the training years and the unseen test years shaded, and the Nov 2022 cohort marked: 8 of the 10 coins it named vanished within a year." width="100%">
+
+## A tour of the product
+
+<table>
+<tr>
+<td width="50%"><a href="https://crypto-red-list.vercel.app"><img src="docs/screens/home.jpg" alt="Home: Red List Index, live census bar, market strip and threatened coins as specimen cards"></a></td>
+<td width="50%"><a href="https://crypto-red-list.vercel.app"><img src="docs/screens/coin.jpg" alt="Assessment sheet for a Critically Endangered coin: probability meter, criteria A, B and D with danger lines, track record"></a></td>
+</tr>
+<tr>
+<td><b>The list.</b> Red List Index, live census of all 500 coins, CMC market context, and threatened coins as field-guide specimen cards.</td>
+<td><b>Assessment sheet.</b> One coin's chance of vanishing, which danger lines it crossed, and how often coins in its category really vanished.</td>
+</tr>
+<tr>
+<td colspan="2"><a href="https://crypto-red-list.vercel.app/time-machine"><img src="docs/screens/time-machine.jpg" alt="Time machine on 15 November 2022: the ten coins named most at risk and what happened to each 12 months later"></a></td>
+</tr>
+<tr>
+<td colspan="2"><b>Time machine.</b> Pick any quarter since 2019, see what the list said then, and check what actually happened 12 months later. Nothing is hidden: the two coins that survived are shown too.</td>
+</tr>
+</table>
+
+<sub>Screenshots are of the live site with real CMC data, captured 20 Nov 2026. The featured coin changes as the data does.</sub>
 
 ## What makes it different
 
@@ -82,6 +118,8 @@ The model was trained on quarterly cohorts **Nov 2019 – Nov 2021** and tested 
 - **Extinction alerts:** [`/feed.xml`](https://crypto-red-list.vercel.app/feed.xml) RSS of coins moving to a higher-risk category.
 
 ## How a status is decided
+
+<img src="docs/pipeline.svg" alt="Pipeline: 10 CoinMarketCap endpoints feed a shared cache and evidence ledger, which feeds signals A (falling behind), B (exchanges leaving) and D (nobody trading), a 6-weight logistic regression, and finally an IUCN category: CR at 40% or more, EN 20%, VU 10%, NT 5%, otherwise LC." width="100%">
 
 1. **Three warning signs**, from CMC data today and 6 / 12 months ago:
    - **A · Falling behind the market:** 12-month market-cap change relative to the median top-500 coin (so a market-wide crash does not paint everything red).
@@ -129,7 +167,10 @@ Reproduce the research (needs a CMC plan with history back to 2018):
 npm run census                # download the 33-quarter census to data/census (not committed)
 npm run calibrate             # train on 2019-21, test on 2022-25 -> src/redlist/model.json
 npm run backtest              # time machine -> src/redlist/backtest-results.json
+node scripts/readme-art.mjs   # redraw the README charts in docs/ from those results
 ```
+
+**About the README art.** The banner, pipeline, calibration and Red List Index images are generated from `src/redlist/backtest-results.json` by `scripts/readme-art.mjs`, so they cannot drift from the numbers the site and tests use. They are plain SVG animated with CSS only, because GitHub strips scripts from README images. Every element rests in its final state, so a viewer with `prefers-reduced-motion` turned on sees the finished chart, never a half-drawn one.
 
 ## Code
 
@@ -139,7 +180,8 @@ src/redlist/    signals, model, assessment, census mapping, time machine, Red Li
 src/live/       live list, coin info, fear & greed, market context, shared caches
 src/web/        status metadata, badges and feed, UI components
 app/            pages, /api/redlist, /badge/[symbol], /feed.xml, share card
-scripts/        census download, calibration, backtest, terminal list, secret scan
+scripts/        census download, calibration, backtest, terminal list, secret scan, README art
+docs/           animated README charts (generated), screenshots, demo GIF
 tests/          130 tests (Vitest), including guards on the shipped model and published results
 ```
 
