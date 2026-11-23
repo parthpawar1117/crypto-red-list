@@ -26,9 +26,9 @@
 
 <br>
 
-<a href="https://youtu.be/YuUll8M95Yk"><img src="docs/demo.gif" alt="15-second tour: the live list, a Critically Endangered coin's assessment sheet, and the time machine replaying November 2022" width="760"></a>
+<a href="https://youtu.be/YuUll8M95Yk"><img src="docs/demo.gif" alt="13-second tour of the live site: the 4-second eclipse intro, the home hero with cursor-reactive light ribbons, threatened coins as glowing cards, and the time machine" width="760"></a>
 
-<sub>15-second tour of the live site · <a href="https://youtu.be/YuUll8M95Yk">full 1:57 demo with narration</a></sub>
+<sub>13-second tour of the live site: intro, cursor-reactive backgrounds, threatened coins, time machine · <a href="https://youtu.be/YuUll8M95Yk">full 1:57 demo with narration</a></sub>
 
 </div>
 
@@ -81,7 +81,7 @@ The model was trained on quarterly cohorts **Nov 2019 – Nov 2021** and tested 
 
 <table>
 <tr>
-<td width="50%"><a href="https://crypto-red-list.vercel.app"><img src="docs/screens/home.jpg" alt="Home: Red List Index, live census bar, market strip and threatened coins as specimen cards"></a></td>
+<td width="50%"><a href="https://crypto-red-list.vercel.app"><img src="docs/screens/home.jpg" alt="Home: Crypto Red List Index, live census bar and market strip over the animated light-ribbon backdrop"></a></td>
 <td width="50%"><a href="https://crypto-red-list.vercel.app"><img src="docs/screens/coin.jpg" alt="Assessment sheet for a Critically Endangered coin: probability meter, criteria A, B and D with danger lines, track record"></a></td>
 </tr>
 <tr>
@@ -96,7 +96,7 @@ The model was trained on quarterly cohorts **Nov 2019 – Nov 2021** and tested 
 </tr>
 </table>
 
-<sub>Screenshots are of the live site with real CMC data, captured 20 Nov 2026. The featured coin changes as the data does.</sub>
+<sub>Screenshots are of the live site with real CMC data, captured 23 Nov 2026. The featured coin changes as the data does. Every page has its own animated background that reacts to the cursor.</sub>
 
 ## What makes it different
 
