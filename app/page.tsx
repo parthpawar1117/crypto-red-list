@@ -9,6 +9,7 @@ import { Register } from "@/web/components/Register";
 import { RliChart, type RliPoint } from "@/web/components/RliChart";
 import { Specimen } from "@/web/components/Specimen";
 import { MarketStrip } from "@/web/components/MarketStrip";
+import { Intro } from "@/web/components/Intro";
 import type { TmCoin } from "@/web/components/TimeMachine";
 import { THREATENED } from "@/web/status";
 import { fmtDate, toRows } from "@/web/view";
@@ -33,14 +34,19 @@ export default async function Home() {
 
   return (
     <main>
-      <section className="hero">
+      <Intro />
+      <section className="hero hero-web3">
         <div className="wrap hero-grid">
           <div>
-            <p className="kicker">Assessment of the top 500 cryptocurrencies · data as of {fmtDate(list.asOf)}</p>
-            <h1>The Crypto Red List</h1>
+            <p className="kicker"><span className="live-dot" aria-hidden="true" />Live · top 500 cryptocurrencies · data as of {fmtDate(list.asOf)}</p>
+            <h1 className="display">Crypto <span className="glow-text">Red</span> List</h1>
             <p className="lede">
               Which coins are heading for extinction? Every coin gets a measured chance of vanishing within 12 months, and the method was tested on three years it never saw.
             </p>
+            <div className="hero-actions">
+              <a className="btn btn-glow" href="#threatened">See who is threatened</a>
+              <Link className="btn btn-ghost" href="/time-machine">Open the time machine →</Link>
+            </div>
           </div>
           <div className="index-panel">
             <p className="kicker" style={{ margin: 0 }}>Crypto Red List Index</p>
@@ -64,7 +70,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="threatened">
         <div className="wrap">
           <div className="section-head">
             <div>

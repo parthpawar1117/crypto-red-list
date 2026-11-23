@@ -1,11 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
-import { Fraunces, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Fraunces, IBM_Plex_Mono, IBM_Plex_Sans, Space_Grotesk, Syncopate } from "next/font/google";
+import { Backdrop } from "@/web/components/Backdrop";
 import "./globals.css";
 
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", axes: ["opsz"], display: "swap" });
 const plexSans = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-plex-sans", display: "swap" });
 const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-plex-mono", display: "swap" });
+const syncopate = Syncopate({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-syncopate", display: "swap" });
+const grotesk = Space_Grotesk({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-grotesk", display: "swap" });
+
+// Runs before first paint: skip the home intro on repeat visits in this session and for reduced motion.
+const INTRO_GATE = `try{if(sessionStorage.getItem("crl-intro")||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("no-intro")}catch(e){}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://crypto-red-list.vercel.app"),
@@ -17,8 +23,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f0e6" },
-    { media: "(prefers-color-scheme: dark)", color: "#141210" },
+    { media: "(prefers-color-scheme: light)", color: "#05030a" },
+    { media: "(prefers-color-scheme: dark)", color: "#05030a" },
   ],
 };
 
@@ -36,8 +42,12 @@ function Mark() {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${plexSans.variable} ${plexMono.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${plexSans.variable} ${plexMono.variable} ${syncopate.variable} ${grotesk.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: INTRO_GATE }} />
+      </head>
       <body>
+        <Backdrop />
         <header className="site-head">
           <div className="wrap">
             <Link href="/" className="brand">
