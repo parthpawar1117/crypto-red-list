@@ -13,7 +13,6 @@ const latest = r.cohorts.at(-1);
 
 const C = { paper: "#f4f0e6", ink: "#1d1a16", ink2: "#4a443b", muted: "#776f62", rule: "#d6cdb9", card: "#fbf8f1", red: "#b3261e" };
 const IUCN = { CR: "#d81e05", EN: "#fc7f3f", VU: "#f9e814", NT: "#cce226", LC: "#60c659", DD: "#b9b2a3", NE: "#ffffff" };
-const NAME = { CR: "Critically Endangered", EN: "Endangered", VU: "Vulnerable", NT: "Near Threatened", LC: "Least Concern", DD: "Data Deficient", NE: "Not Evaluated" };
 const SERIF = "Georgia, 'Times New Roman', serif";
 const MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
 

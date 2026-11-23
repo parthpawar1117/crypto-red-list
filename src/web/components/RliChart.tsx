@@ -30,6 +30,8 @@ export function RliChart({ points, fg = [], compact = false }: { points: RliPoin
   const y = (v: number) => PAD.t + (1 - (v - lo) / (hi - lo)) * (h - PAD.t - PAD.b);
   const yFg = (v: number) => PAD.t + (1 - v / 100) * (h - PAD.t - PAD.b);
   const path = points.map((p, i) => `${i ? "L" : "M"}${x(p.date).toFixed(1)},${y(p.rli).toFixed(1)}`).join(" ");
+  const base = (h - PAD.b).toFixed(1);
+  const area = `${path} L${x(points.at(-1)!.date).toFixed(1)},${base} L${x(points[0]!.date).toFixed(1)},${base} Z`;
   const fgIn = fg.filter((f) => t(f.date) >= x0 && t(f.date) <= x1);
   const fgPath = fgIn.map((f, i) => `${i ? "L" : "M"}${x(f.date).toFixed(1)},${yFg(f.value).toFixed(1)}`).join(" ");
   const years = [];
@@ -38,6 +40,17 @@ export function RliChart({ points, fg = [], compact = false }: { points: RliPoin
 
   return (
     <svg className="chart" viewBox={`0 0 ${W} ${h}`} role="img" aria-label={`Red List Index from ${points[0]!.date} (${vals[0]!.toFixed(3)}) to ${points.at(-1)!.date} (${vals.at(-1)!.toFixed(3)})`}>
+      <defs>
+        <linearGradient id="rli-grad" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stopColor="#b14bff" />
+          <stop offset="0.55" stopColor="#ff7a3c" />
+          <stop offset="1" stopColor="#ff3b2f" />
+        </linearGradient>
+        <linearGradient id="rli-area" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stopColor="#ff4a35" stopOpacity="0.28" />
+          <stop offset="1" stopColor="#ff4a35" stopOpacity="0" />
+        </linearGradient>
+      </defs>
       {ticks.map((v) => (
         <g key={v}>
           <line className="axis" x1={PAD.l} x2={W - PAD.r} y1={y(v)} y2={y(v)} />
@@ -58,6 +71,7 @@ export function RliChart({ points, fg = [], compact = false }: { points: RliPoin
           ) : null}
         </>
       ) : null}
+      <path className="rli-area" d={area} />
       <path className="rli-line" d={path} />
       {points.map((p) => (
         <circle key={p.date} className={`dot${p.live ? " live" : ""}`} cx={x(p.date)} cy={y(p.rli)} r={p.live ? 5 : compact ? 2 : 3}>

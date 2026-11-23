@@ -35,7 +35,7 @@ export default async function TimeMachinePage() {
             <div>
               <h2>The Crypto Red List Index, 2019 to today</h2>
               <p>
-                Solid line: the index (1.0 = every coin Least Concern; red dot = live). Dashed blue: CoinMarketCap&apos;s Fear &amp; Greed Index, monthly average (0–100, right axis), available from mid-2023.
+                Solid line: the index (1.0 = every coin Least Concern; red dot = live). Dashed violet: CoinMarketCap&apos;s Fear &amp; Greed Index, monthly average (0–100, right axis), available from mid-2023.
               </p>
             </div>
           </div>
